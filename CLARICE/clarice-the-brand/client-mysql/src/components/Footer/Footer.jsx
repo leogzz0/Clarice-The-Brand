@@ -24,10 +24,9 @@ const Footer = () => {
                 <div className='item'>
                     <h1>About</h1>
                     <span>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor. 
+                        Clarice The Brand stands for all those fashionistas out there who are willing to step up their looks. 
+                        We help you elevate your style and become the most confident version of yourself through your shoes so that you can be your true, most fashion self. 
+                        As Marylin Monroe once said, “Give a woman the right shoes and she can conquer the world” and we couldn’t agree more! 
                     </span>
                 </div>
                 <div className='item'>

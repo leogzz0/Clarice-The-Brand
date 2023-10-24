@@ -3,24 +3,26 @@ import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import ShoppingCartOoutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import {Link} from "react-router-dom"
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import {Link} from "react-router-dom";
 import { useState } from 'react';
-import Cart from '../Cart/Cart'
-import "./Navbar.scss"
+import { useSelector } from 'react-redux';
+import Cart from '../Cart/Cart';
+import "./Navbar.scss";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
+    const products = useSelector(state => state.cart.products) 
 
     return (
         <div className='navbar'>
             <div className='wrapper'>
                 <div className='left'>
                     <div className='item'>
-                        <Link className='link' to='/'>Shop</Link>
+                        <Link className='link' to='/products/1'>Shop</Link>
                     </div>
                     <div className='item'>
-                        <Link className='link' to='/products/'>Collections</Link>
+                        <Link className='link' to='/'>Collections</Link>
                     </div>
                     <div className='item'>
                         <Link className='link' to='/'>Editorials</Link>
@@ -48,8 +50,8 @@ const Navbar = () => {
                         <PersonOutlineOutlinedIcon/>
                         <FavoriteBorderOutlinedIcon/>
                         <div className='cartIcon' onClick={()=>setOpen(!open)}>
-                            <ShoppingCartOoutlinedIcon/>
-                            <span>0</span>
+                            <ShoppingCartOutlinedIcon/>
+                            <span>{products.length}</span>
                         </div>
                     </div>
                 </div>

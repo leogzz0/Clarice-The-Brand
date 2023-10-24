@@ -1,51 +1,64 @@
 import React from 'react'
 import "./Cart.scss";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { useSelector } from 'react-redux';
+import { removeItem, resetCart } from '../../redux/cartReducer';
+import { useDispatch } from 'react-redux';
+import { loadStripe } from "@stripe/stripe-js";
+import { makeRequest } from "../../makeRequest";
 
 const Cart = () => {
-  const data = [
-    {
-      id: 1,
-      img: "https://media.dior.com/couture/ecommerce/media/catalog/product/4/K/1681232753_KCQ886VEV_S22B_E02_GH.jpg?imwidth=3840",
-      img2: "https://media.dior.com/couture/ecommerce/media/catalog/product/N/N/1682680124_F_23_3_LOOK_829_E15_GH.jpg?imwidth=1080",
-      title: "Martinolli Shoe Black",
-      desc: "Martinolli Shoe Black",
-      isNew: true,
-      oldPrice: 19,
-      price: 12,
-    },
-    {
-      id: 2,
-      img: "https://cdn.shopify.com/s/files/1/0261/6898/3607/products/1677671451_KCQ266VEA_S63H_E02_GH_494x494@2x.jpg?v=1678095940",
-      img2: "https://cdn.shopify.com/s/files/1/0261/6898/3607/products/1677671451_KCQ266VEA_S63H_E06_ZH_1024x1024@2x.jpg?v=1678095931",
-      title: "Martinolli Shoe Green",
-      desc: "Martinolli Shoe Green",
-      isNew: false,
-      oldPrice: 24,
-      price: 15,
-    },
-  ];
+  const products = useSelector(state => state.cart.products) 
+  const dispatch = useDispatch();
+  
+  const totalPrice = () => {
+    let total = 0;
+    products.forEach(item => (
+      total += item.quantity * item.price
+    ));
+    return total.toFixed(2)
+  };
+
+  const stripePromise = loadStripe("pk_test_51NycZYFkkp11RfLBILkc3GDUYT9aQB8F5Snr5Pgq3ueQ86OASZkJKpj7kWETf9lwlBhmr2n00I3gDsHZ95CEBGUU00vdBeuw7a");
+
+  const handlePayment = async () => {
+    try {
+      const stripe = await stripePromise;
+
+      const res = await makeRequest.post("/orders", {
+        products,
+      });
+
+      await stripe.redirectToCheckout({
+        sessionId: res.data.stripeSession.id,
+
+      })
+
+    } catch(err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div className="cart">
       <h1>Products in your cart</h1>
-      {data?.map(item=>(
+      {products?.map(item=>(
         <div className="item" key={item.id}>
-          <img src={item.img} alt="" />
+          <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" />
           <div className="details">
             <h1>{item.title}</h1>
-            <div className="price">${item.price}</div>
-            <p>{item.desc?.substring(0,100)}</p>
+            <div className="price">{item.quantity} x ${item.price}</div>
+            <p>{item.description?.substring(0,100)}</p>
           </div>
-          <DeleteOutlinedIcon className='delete'/>
+          <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
         </div>
       ))}
       <div className="total">
         <span>SUBTOTAL</span>
-        <span>$123</span>
+        <span>${totalPrice()}</span>
       </div>
-      <button>PROCEED TO CHECKOUT</button>
-      <span className='reset'>Reset Cart</span>
+      <button onClick={handlePayment}>PROCEED TO CHECKOUT</button>
+      <span className='reset' onClick={() => dispatch(resetCart())}>Reset Cart</span>
     </div>
   )
 }

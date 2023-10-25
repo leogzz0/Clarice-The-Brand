@@ -23,17 +23,21 @@
     align-items: center;
 
     .season {
-      font-size: 2em;
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
     }
     
     .launch-title {
       font-size: 3em;
       margin: 10px 0;
+      font-family: 'Didot', serif;
     }
     
     .discover-more-btn {
-      padding: 10px 20px;
-      border: 2px solid white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      padding: 5px 15px;
+      border: 1px solid white;
       color: white;
       text-decoration: none;
       transition: background-color 0.3s, color 0.3s;

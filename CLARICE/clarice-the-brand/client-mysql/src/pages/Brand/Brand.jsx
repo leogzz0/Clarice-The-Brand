@@ -68,15 +68,15 @@ const Brand = () => {
       <div className="collage2">
         <div className="row">
           <div className="col large">
-            <img src="/img/Editorial Clarice/20-SAM_0487.jpg" alt="Large Image" />
+            <img src="/img/Editorial Clarice/20-SAM_0487.jpg" alt="Two models" />
           </div>
         </div>
         <div className="row">
           <div className="col">
-            <img src="/img/Editorial Clarice/137-SAM_0272.jpg" alt="Small Image 1" />
+            <img src="/img/Editorial Clarice/137-SAM_0272.jpg" alt="Champagne model" />
           </div>
           <div className="col">
-            <img src="/img/Editorial Clarice/210-SAM_0148.jpg" alt="Small Image 2" />
+            <img src="/img/Editorial Clarice/210-SAM_0148.jpg" alt="Heels" />
           </div>
         </div>
       </div>

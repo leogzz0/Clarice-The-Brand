@@ -1,9 +1,9 @@
-import React from "react";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import List from "../../components/List/List";
-import useFetch from "../../hooks/useFetch";
-import "./Products.scss";
+import React from 'react';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import List from '../../components/List/List';
+import useFetch from '../../hooks/useFetch';
+import './Products.scss';
 
 const Products = () => {
   const catId = parseInt(useParams().id);
@@ -11,11 +11,15 @@ const Products = () => {
   const [sort, setSort] = useState(null);
   const [selectedSubCats, setSelectedSubCats] = useState([]);
 
-  const { data, loading, error } = useFetch(
+  const { data, error } = useFetch(
     `/sub-categories?[filters][categories][id][$eq]=${catId}`,
   );
 
-  console.log(data)
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  console.log(data);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -66,7 +70,7 @@ const Products = () => {
               id="asc"
               value="asc"
               name="price"
-              onChange={(e) => setSort("asc")}
+              onChange={() => setSort('asc')}
             />
             <label htmlFor="asc">Price (Lowest first)</label>
           </div>
@@ -76,7 +80,7 @@ const Products = () => {
               id="desc"
               value="desc"
               name="price"
-              onChange={(e) => setSort("desc")}
+              onChange={() => setSort('desc')}
             />
             <label htmlFor="desc">Price (Highest first)</label>
           </div>

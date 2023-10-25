@@ -13,22 +13,6 @@ const Product = () => {
     const id = useParams().id
     const[selectedImg, setSelectedImg] = useState("img");
     const[quantity, setQuantity] = useState(1);
-    // const images = [
-    //     "https://img01.ztat.net/article/spp-media-p1/579fd32c33444d8b88a2ed7126b60cff/dbe779a0451949c1bdcc04cb3922192d.jpg?imwidth=762",
-    //     "https://img.ltwebstatic.com/images3_pi/2021/10/14/16341767122abf123dfd8d662364f2eabaaf786b63_thumbnail_900x.webp",
-    //     "https://img.ltwebstatic.com/images3_pi/2021/10/14/1634176715803904b7b50ac1ecd0b9a1dc2ecd76be_thumbnail_900x.webp",
-    //     "https://img.ltwebstatic.com/images3_pi/2021/10/14/1634176717946e2e28d7982bed9198c6d52e83ed4f_thumbnail_900x.webp",
-    //     "https://images.unsplash.com/photo-1609534927279-5d8c599f3ea6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-    // ];
-    /*
-    const images = [
-        "https://img01.ztat.net/article/spp-media-p1/579fd32c33444d8b88a2ed7126b60cff/dbe779a0451949c1bdcc04cb3922192d.jpg?imwidth=762",
-        "https://img.ltwebstatic.com/images3_pi/2021/10/14/16341767122abf123dfd8d662364f2eabaaf786b63_thumbnail_900x.webp",
-        "https://img.ltwebstatic.com/images3_pi/2021/10/14/1634176715803904b7b50ac1ecd0b9a1dc2ecd76be_thumbnail_900x.webp",
-        "https://img.ltwebstatic.com/images3_pi/2021/10/14/1634176717946e2e28d7982bed9198c6d52e83ed4f_thumbnail_900x.webp",
-        "https://images.unsplash.com/photo-1609534927279-5d8c599f3ea6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-    ];
-    */
     const dispatch = useDispatch();
     const { data, loading, error } = useFetch(
         `/products/${id}?populate=*`

@@ -4,6 +4,7 @@ import Home from './pages/Home/Home';
 import Product from './pages/Product/Product';
 import Products from './pages/Products/Products';
 import Brand from './pages/Brand/Brand';
+import Editorial from './pages/Editorial/Editorial';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import './app.scss';
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path:'/brand',
         element:<Brand/>
+      },
+      {
+        path:'/editorial',
+        element:<Editorial/>
       }
     ]
   },

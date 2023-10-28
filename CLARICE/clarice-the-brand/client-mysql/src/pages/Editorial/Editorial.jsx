@@ -3,9 +3,9 @@ import FeaturedEditorial from '../../components/FeaturedEditorial/FeaturedEditor
 
 const EditorialData = [
   {
-    imageUrl: '/img/Editorial Clarice/57-SAM_0412.jpg',
-    season: 'FW2023 Launch',
-    launchTitle: 'Clarice The Brand',
+    imageUrl: '/img/Editorial Clarice/DSC_1426.JPG',
+    season: 'Clarice The Brand',
+    launchTitle: 'La Beauté Collection',
     link: '/',
   },
 ];

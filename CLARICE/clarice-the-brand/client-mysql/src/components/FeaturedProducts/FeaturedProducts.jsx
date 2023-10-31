@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '../Card/Card';
 import './FeaturedProducts.scss';
 import useFetch from '../../hooks/useFetch';
+import PropTypes from 'prop-types';
 
 const FeaturedProducts = ({ type }) => {
   const { data, loading, error } = useFetch(
@@ -23,6 +24,10 @@ const FeaturedProducts = ({ type }) => {
       </div>
     </div>
   );
+};
+
+FeaturedProducts.propTypes = {
+  type: PropTypes.string.isRequired,
 };
 
 export default FeaturedProducts;

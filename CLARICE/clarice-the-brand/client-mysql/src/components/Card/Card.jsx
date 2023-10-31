@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.scss';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const Card = ({ item }) => {
   return (
@@ -33,6 +34,32 @@ export const Card = ({ item }) => {
       </div>
     </Link>
   );
+};
+
+Card.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    attributes: PropTypes.shape({
+      isNew: PropTypes.bool,
+      title: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      img: PropTypes.shape({
+        data: PropTypes.shape({
+          attributes: PropTypes.shape({
+            url: PropTypes.string.isRequired,
+          }).isRequired,
+        }).isRequired,
+      }).isRequired,
+      img2: PropTypes.shape({
+        data: PropTypes.shape({
+          attributes: PropTypes.shape({
+            url: PropTypes.string.isRequired,
+          }).isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+    oldPrice: PropTypes.number,
+  }).isRequired,
 };
 
 export default Card;

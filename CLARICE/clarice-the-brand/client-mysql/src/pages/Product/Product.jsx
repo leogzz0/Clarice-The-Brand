@@ -19,6 +19,8 @@ const Product = () => {
     <div className="product">
       {loading ? (
         'loading'
+      ) : error ? (
+        <div>Something went wrong!</div>
       ) : (
         <>
           <div className="left">

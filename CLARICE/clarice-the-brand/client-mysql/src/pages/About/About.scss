@@ -1,0 +1,96 @@
+.about-us {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+
+    .left-side {
+      width: 25%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .words {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+          font-family: 'Oswald', sans-serif;
+          margin: 10px 0;
+          font-size: 1em;
+        }
+      }
+    }
+
+    .right-side {
+      width: 75%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 2em;
+      }
+
+      p {
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.5em;
+        text-align: justify;
+      }
+    }
+  }
+  .full-width-image {
+    img {
+      width: 100%;
+      height: 70vh;
+      object-fit: cover;
+    }
+  }
+  
+  .quote-and-image {
+    display: flex;
+    
+    .quote {
+      width: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'YourQuoteFont', serif;
+      
+      p {
+        font-size: 1.5em;
+        text-align: center;
+      }
+      
+      .comma {
+        font-size: 5em;
+        position: absolute;
+        
+        &.top-left {
+          top: 0;
+          left: 0;
+        }
+        
+        &.bottom-right {
+          bottom: 0;
+          right: 0;
+        }
+      }
+    }
+    
+    .image {
+      width: 50%;
+      
+      img {
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+      }
+    }
+  }
+}
+

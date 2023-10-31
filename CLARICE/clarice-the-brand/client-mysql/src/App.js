@@ -8,6 +8,7 @@ import Products from './pages/Products/Products';
 import Brand from './pages/Brand/Brand';
 import Editorial from './pages/Editorial/Editorial';
 import EditorialDetail from './pages/EditorialDetail/EditorialDetail';
+import About from './pages/About/About';
 import './app.scss';
 
 const Layout = () => {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path:'/editorial/:season',
         element:<EditorialDetail/>
+      },
+      {
+        path:'/about',
+        element:<About/>
       }
     ]
   },

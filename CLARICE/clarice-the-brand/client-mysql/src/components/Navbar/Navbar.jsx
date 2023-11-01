@@ -74,7 +74,7 @@ const Navbar = () => {
             <PersonOutlineOutlinedIcon className={getLinkClassName('/profileIcon')}/>
             <FavoriteBorderOutlinedIcon className={getLinkClassName('/wishlistIcon')}/>
             <div className="cartIcon" onClick={() => setOpen(!open)}>
-              <ShoppingCartOutlinedIcon />
+              <ShoppingCartOutlinedIcon className={getLinkClassName('/cartIcon', true)}/>
               <span>{products.length}</span>
             </div>
           </div>

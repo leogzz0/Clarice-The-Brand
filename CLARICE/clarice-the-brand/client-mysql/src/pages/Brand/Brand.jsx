@@ -3,9 +3,9 @@ import './Brand.scss';
 
 const Brand = () => {
   const images = [
-    '/img/Editorial Clarice/176-SAM_0211.jpg',
+    // '/img/Editorial Clarice/176-SAM_0211.jpg',
     '/img/Editorial Clarice/59-SAM_0410.jpg',
-    '/img/Editorial Clarice/169-SAM_0224.jpg',
+    // '/img/Editorial Clarice/169-SAM_0224.jpg',
     '/img/Editorial Clarice/57-SAM_0412.jpg',
   ];
 

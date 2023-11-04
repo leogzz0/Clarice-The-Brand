@@ -43,6 +43,22 @@ const Product = () => {
                   alt=""
                   onClick={() => setSelectedImg('img2')}
                 />
+                <img
+                  src={
+                    process.env.REACT_APP_UPLOAD_URL +
+                    data?.attributes?.img3?.data?.attributes?.url
+                  }
+                  alt=""
+                  onClick={() => setSelectedImg('img3')}
+                />
+                <img
+                  src={
+                    process.env.REACT_APP_UPLOAD_URL +
+                    data?.attributes?.img4?.data?.attributes?.url
+                  }
+                  alt=""
+                  onClick={() => setSelectedImg('img4')}
+                />
                 {/* <img src={data?.attributes?.img?.data?.attributes?.url} alt="" onClick={e=>setSelectedImg(2)}/>
                           <img src={data?.attributes?.img?.data?.attributes?.url} alt="" onClick={e=>setSelectedImg(3)}/>
                           <img src={data?.attributes?.img?.data?.attributes?.url} alt="" onClick={e=>setSelectedImg(4)}/> */}
@@ -93,20 +109,16 @@ const Product = () => {
                 <div className="item">
                   <FavoriteBorderIcon /> ADD TO WISH LIST
                 </div>
-                {/* 
-                          <div className="item">
-                              <BalanceIcon/> ADD TO COMPARE
-                          </div>
-                          */}
               </div>
               <div className="info">
-                <span>Collection: Aviato</span>
-                <span>Product Type: Shoes</span>
-                <span>Tag: Shoes, Women, Top</span>
+                <span>Collection: The Beautique Collection</span>
+                <span>Color: Black/ Vanilla</span>
+                <span>Material: Faux Leather</span>
+                <span>Handcrafted in Mexico</span>
               </div>
               <hr />
               <div className="info">
-                <span>DESCRIPTION</span>
+                <span>FIT</span>
                 <hr />
                 <span>ADDITIONAL INFORMATION</span>
                 <hr />

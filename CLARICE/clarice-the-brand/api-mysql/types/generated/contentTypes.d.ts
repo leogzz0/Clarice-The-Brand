@@ -783,6 +783,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
     type: Attribute.Enumeration<['normal', 'featured', 'trending']>;
     img3: Attribute.Media;
     img4: Attribute.Media;
+    color: Attribute.String;
+    material: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -111,9 +111,9 @@ const Product = () => {
                 </div>
               </div>
               <div className="info">
-                <span>Collection: The Beautique Collection</span>
-                <span>Color: Black/ Vanilla</span>
-                <span>Material: Faux Leather</span>
+                <span>Collection: La Beauté Collection</span>
+                <span>Color: {data?.attributes?.color}</span>
+                <span>Material: {data?.attributes?.material}</span>
                 <span>Handcrafted in Mexico</span>
               </div>
               <hr />

@@ -22,7 +22,7 @@ const Product = () => {
         {loading ? (
           'loading'
         ) : error ? (
-          <div>Something went wrong!</div>
+          <div>SOMETHING WENT WRONG!</div>
         ) : (
           <>
             <div className="left">

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Categories.scss';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Categories = () => {
   return (
@@ -8,39 +8,39 @@ const Categories = () => {
       <div className="col">
         <div className="row">
           <img
-            src="https://images.unsplash.com/photo-1620298106068-62c6a8bd05cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-            alt=""
+            src="./img/Editorial Clarice/68-SAM_0390.jpg"
+            alt="image-collage-1"
           />
-          <button>
+          {/* <button>
             <Link className="link" to="/products/1">
               Sale
             </Link>
-          </button>
+          </button> */}
         </div>
         <div className="row">
           <img
-            src="https://images.unsplash.com/photo-1530904655194-92d55d4a006b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-            alt=""
+            src="./img/Editorial Clarice/163-SAM_0237.jpg"
+            alt="image-collage-2"
           />
-          <button>
+          {/* <button>
             <Link to="/products/1" className="link">
               Women
             </Link>
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="col">
         <div className="row">
           {' '}
           <img
-            src="https://images.unsplash.com/photo-1617074172287-f364b77c1e77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-            alt=""
+            src="./img/Editorial Clarice/88-SAM_0359.jpg"
+            alt="image-collage-3"
           />
-          <button>
+          {/* <button>
             <Link to="/products/1" className="link">
               New Season
             </Link>
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="col col-l">
@@ -48,41 +48,41 @@ const Categories = () => {
           <div className="col">
             <div className="row">
               <img
-                src="https://images.pexels.com/photos/5745782/pexels-photo-5745782.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt=""
+                src="./img/Editorial Clarice/20-SAM_0487.jpg"
+                alt="image-collage-4"
               />
-              <button>
+              {/* <button>
                 <Link to="/products/1" className="link">
                   Men
                 </Link>
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="col">
             <div className="row">
               {' '}
               <img
-                src="https://images.unsplash.com/photo-1616837874254-8d5aaa63e273?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1456&q=80"
-                alt=""
+                src="./img/Editorial Clarice/121-SAM_0302.jpg"
+                alt="image-collage-5"
               />
-              <button>
+              {/* <button>
                 <Link to="/products/1" className="link">
                   Accessories
                 </Link>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
         <div className="row">
           <img
-            src="https://images.unsplash.com/photo-1590739241856-cc8c15419fc5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3209&q=80"
-            alt=""
+            src="./img/Editorial Clarice/DSC_1415.JPG"
+            alt="image-collage-6"
           />
-          <button>
+          {/* <button>
             <Link to="/products/1" className="link">
               Shoes
             </Link>
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

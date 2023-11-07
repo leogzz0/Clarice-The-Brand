@@ -27,7 +27,14 @@
 
         .icons {
             display: flex;
-            gap: 10px;
+            gap: 15px;
+        }
+
+        a {
+            color: #FFF;
+            :hover {
+                scale: 1.02;
+            }
         }
     }
 }

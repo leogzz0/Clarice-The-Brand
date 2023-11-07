@@ -13,8 +13,12 @@ const Contact = () => {
           <button>JOIN US</button>
         </div>
         <div className="icons">
-          <FacebookIcon />
-          <InstagramIcon />
+          <a href="https://www.facebook.com/profile.php?id=100090341854611" target='_blank' rel='noreferrer'>
+            <FacebookIcon />
+          </a>
+          <a href="https://www.instagram.com/claricethebrand/" target='_blank' rel='noreferrer'>
+            <InstagramIcon />
+          </a>
         </div>
       </div>
     </div>

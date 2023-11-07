@@ -22,6 +22,18 @@
             span {
                 color: gray;
             }
+
+            a {
+                text-decoration: none;
+                color: gray;
+                &:hover {
+                    color: #121212;
+                    scale: 1.01;
+                }
+                &:visited {
+                    text-decoration: none;
+                }
+            }
         }
     }
 

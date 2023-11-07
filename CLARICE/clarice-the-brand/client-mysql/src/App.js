@@ -9,6 +9,7 @@ import Brand from './pages/Brand/Brand';
 import Editorial from './pages/Editorial/Editorial';
 import EditorialDetail from './pages/EditorialDetail/EditorialDetail';
 import About from './pages/About/About';
+import ContactUs from './pages/ContactUs/ContactUs';
 import './app.scss';
 
 const Layout = () => {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path:'/about',
         element:<About/>
+      },
+      {
+        path:'/contact',
+        element:<ContactUs />
       }
     ]
   },

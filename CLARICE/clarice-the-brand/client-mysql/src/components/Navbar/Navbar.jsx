@@ -60,7 +60,7 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="item">
-            <Link className={getLinkClassName('/link')} to="/">
+            <Link className={getLinkClassName('/contact')} to="/contact">
               CONTACT
             </Link>
           </div>

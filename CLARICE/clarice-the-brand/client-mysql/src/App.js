@@ -5,9 +5,11 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Product from './pages/Product/Product';
 import Products from './pages/Products/Products';
-import Brand from './pages/Brand/Brand';
+import Collection from './pages/Collection/Collection';
+import CollectionDetail from './pages/CollectionDetail/CollectionDetail';
 import Editorial from './pages/Editorial/Editorial';
 import EditorialDetail from './pages/EditorialDetail/EditorialDetail';
+import Brand from './pages/Brand/Brand';
 import About from './pages/About/About';
 import ContactUs from './pages/ContactUs/ContactUs';
 import './app.scss';
@@ -41,8 +43,12 @@ const router = createBrowserRouter([
         element:<Product/>
       },
       {
-        path:'/brand',
-        element:<Brand/>
+        path:'/collection',
+        element:<Collection/>
+      },
+      {
+        path:'/collection/:collection',
+        element:<CollectionDetail/>
       },
       {
         path:'/editorial',
@@ -53,13 +59,17 @@ const router = createBrowserRouter([
         element:<EditorialDetail/>
       },
       {
+        path:'/brand',
+        element:<Brand/>
+      },
+      {
         path:'/about',
         element:<About/>
       },
       {
         path:'/contact',
         element:<ContactUs />
-      }
+      },
     ]
   },
   {

@@ -1,4 +1,4 @@
-const editorialData = {
+const collectionData = {
   'Clarice The Brand': {
     title: 'La Beauté Collection',
     photos: [
@@ -28,4 +28,4 @@ const editorialData = {
   },
 };
 
-export default editorialData;
+export default collectionData;

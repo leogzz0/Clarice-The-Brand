@@ -16,7 +16,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const getLinkClassName = (route) => {
-    const whiteRoutes = ['/editorial', '/brand', '/collections', '/editorial/Clarice%20The%20Brand'];
+    const whiteRoutes = ['/editorial', '/brand', '/collection', '/editorial/Clarice%20The%20Brand'];
     const isActive = location.pathname === route;
     const isWhite = whiteRoutes.includes(location.pathname);
     return `link${isActive ? ' active' : ''}${isWhite ? ' white' : ''}`;

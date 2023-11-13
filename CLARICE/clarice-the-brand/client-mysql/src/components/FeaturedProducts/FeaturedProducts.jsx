@@ -19,7 +19,7 @@ const FeaturedProducts = ({ type }) => {
         {error
           ? 'SOMETHING WENT WRONG!'
           : loading
-            ? 'loading'
+            ? 'LOADING'
             : data?.map((item) => <Card item={item} key={item.id} />)}
       </div>
     </div>

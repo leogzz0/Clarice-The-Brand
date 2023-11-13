@@ -20,7 +20,7 @@ const Product = () => {
       <div className='navbar-spacer'></div>
       <div className="product">
         {loading ? (
-          'loading'
+          <div>LOADING</div>
         ) : error ? (
           <div>SOMETHING WENT WRONG!</div>
         ) : (

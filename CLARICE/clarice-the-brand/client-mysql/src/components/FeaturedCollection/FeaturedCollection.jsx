@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './FeaturedCollection.scss';
 
-const FeaturedCollection = ({ imageUrl, collection }) => {
+const FeaturedCollection = ({ imageUrl, season, collection }) => {
   return (
     <div className='featured-collection'>
       <img src={imageUrl} alt={collection} className='collection-image'/>
       <div className='content'>
+        <h2 className='season'>{season}</h2>
         <h1 className='collection'>{collection}</h1>
-        <Link to={`/editorial/${collection}`} className='discover-more-btn'>
+        <Link to={`/collection/${season}`} className='discover-more-btn'>
           Discover More
         </Link>
       </div>
@@ -19,6 +20,7 @@ const FeaturedCollection = ({ imageUrl, collection }) => {
 
 FeaturedCollection.propTypes = {
   imageUrl: PropTypes.string.isRequired,
+  season: PropTypes.string.isRequired,
   collection: PropTypes.string.isRequired,
 };
 

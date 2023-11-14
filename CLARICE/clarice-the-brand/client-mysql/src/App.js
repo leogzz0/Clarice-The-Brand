@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         element:<Collection/>
       },
       {
-        path:'/collection/:collection',
+        path:'/collection/:season',
         element:<CollectionDetail/>
       },
       {

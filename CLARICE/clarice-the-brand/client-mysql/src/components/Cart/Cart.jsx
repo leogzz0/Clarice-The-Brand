@@ -19,7 +19,9 @@ const Cart = () => {
     return total.toFixed(2);
   };
 
-  const stripePromise = loadStripe('pk_test_51NycZYFkkp11RfLBILkc3GDUYT9aQB8F5Snr5Pgq3ueQ86OASZkJKpj7kWETf9lwlBhmr2n00I3gDsHZ95CEBGUU00vdBeuw7a');
+  const stripePromise = loadStripe(
+    'pk_test_51NycZYFkkp11RfLBILkc3GDUYT9aQB8F5Snr5Pgq3ueQ86OASZkJKpj7kWETf9lwlBhmr2n00I3gDsHZ95CEBGUU00vdBeuw7a'
+  );
 
   const handlePayment = async () => {
     try {
@@ -48,7 +50,7 @@ const Cart = () => {
           <div className="details">
             <h1>{item.title}</h1>
             <div className="price">{item.quantity} x ${item.price}</div>
-            <p>{item.description?.substring(0,100)}</p>
+            <p>{item.description?.substring(0,25)}</p>
           </div>
           <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
         </div>

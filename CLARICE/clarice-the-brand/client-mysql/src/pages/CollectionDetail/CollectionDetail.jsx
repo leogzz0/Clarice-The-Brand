@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import FifteenCollage from '../../components/FifteenCollage/FifteenCollage';
+// import FifteenCollage from '../../components/FifteenCollage/FifteenCollage';
+import CollectionCollage from '../../components/CollectionCollage/CollectionCollage';
 import collectionData from '../../data/collectionData';
 
 const CollectionDetail = () => {
@@ -8,7 +9,7 @@ const CollectionDetail = () => {
   const collection = collectionData[season];
   return (
     <div>
-      <FifteenCollage photos={collection.photos} />
+      <CollectionCollage photos={collection.photos} />
     </div>
   );
 };

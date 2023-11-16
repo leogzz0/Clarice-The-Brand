@@ -5,16 +5,15 @@ import './FeaturedCollection.scss';
 
 const FeaturedCollection = ({ imageUrl, season, collection }) => {
   return (
-    <div className='featured-collection'>
-      <img src={imageUrl} alt={collection} className='collection-image'/>
-      <div className='content'>
-        <h2 className='season'>{season}</h2>
-        <h1 className='collection'>{collection}</h1>
-        <Link to={`/collection/${season}`} className='discover-more-btn'>
-          Discover More
-        </Link>
+    <Link to={`/collection/${season}`} className='featured-collection-link'>
+      <div className='featured-collection'>
+        <img src={imageUrl} alt={collection} className='collection-image'/>
+        <div className='overlay'></div> {/* Add an overlay for the hover effect */}
+        <div className='content'>
+          <h1 className='collection'>{collection}</h1>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -4,8 +4,6 @@
   box-sizing: border-box;
 }
 
-
-
 header {
   display: flex;
   flex-direction: column;
@@ -13,7 +11,7 @@ header {
   align-items: center;
   text-align: center;
   min-height: 100vh;
-  background-image: url("138-SAM_0271.jpg");
+  background-image: url("assets/138-SAM_0271.jpg");
   background-size: cover;
   background-position: center;
   position: relative;

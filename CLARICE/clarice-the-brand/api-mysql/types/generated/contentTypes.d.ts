@@ -785,6 +785,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     img4: Attribute.Media;
     color: Attribute.String;
     material: Attribute.String;
+    seo: Attribute.Component<'shared.seo', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

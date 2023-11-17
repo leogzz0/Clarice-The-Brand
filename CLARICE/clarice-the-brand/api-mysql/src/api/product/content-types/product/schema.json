@@ -94,6 +94,11 @@
     },
     "material": {
       "type": "string"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.seo"
     }
   }
 }

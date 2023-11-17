@@ -9,7 +9,7 @@ const CollectionDetail = () => {
   const collection = collectionData[season];
   return (
     <div>
-      <CollectionCollage photos={collection.photos} />
+      <CollectionCollage photos={collection.photos} type="trending"/>
     </div>
   );
 };

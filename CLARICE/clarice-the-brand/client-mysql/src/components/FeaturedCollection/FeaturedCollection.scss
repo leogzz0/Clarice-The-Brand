@@ -10,7 +10,7 @@
 
     .content .collection {
       display: block;
-      border-bottom: 3px solid white;
+      border-bottom: 1px solid white;
     }
   }
 }
@@ -51,7 +51,7 @@
 
     .season {
       font-size: 20px;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Didot', serif;
       text-decoration: underline;
     }
 
@@ -59,7 +59,9 @@
       display: none;
       font-size: 3em;
       margin: 10px 0;
-      transition: border-bottom-color 0.3s, display 0.3s; // Transition for underline and display
+      font-family: 'Didot', serif;
+      letter-spacing: 0px;
+      transition: border-bottom-color 0.3s, display 0.3s;
     }
   }
 }

@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import Carousel from '../Carousel/Carousel';
+import Card from '../Card/Card';
+import useFetch from '../../hooks/useFetch';
 import './CollectionCollage.scss';
-// import Carousel from './Carousel'; // This should be your carousel component
+import EastIcon from '@mui/icons-material/East';
+import WestIcon from '@mui/icons-material/West';
 
-const CollectionCollage = ({ photos }) => {
+const CollectionCollage = ({ photos, type }) => {
+  const { data, loading, error } = useFetch(
+    `/products?populate=*&[filters][type][$eq]=${type}`
+  );
+
   return (
     <div className="collection-collage">
       {/* Full-width photo */}
@@ -19,14 +27,24 @@ const CollectionCollage = ({ photos }) => {
       <div className="carousel-section">
         <div className="carousel-title">
           <h2>La Beauté Collection</h2>
-          <h2>La Beauté Collection</h2>
-          <h2>La Beauté Collection</h2>
-          {/* Navigation arrows or buttons */}
+          <div className="icons">
+            <div className="icon">
+              <WestIcon />
+            </div>
+            <div className="icon">
+              <EastIcon />
+            </div>
+          </div>
         </div>
         <div className="carousel">
-          {/* <Carousel products={products} /> */}
+          {error
+            ? 'SOMETHING WENT WRONG!'
+            : loading
+              ? 'LOADING'
+              : data?.map((item) => <Card item={item} key={item.id} />)}
         </div>
       </div>
+
 
       {/* Photo Grid */}
       <div className="photo-row">
@@ -65,7 +83,7 @@ const CollectionCollage = ({ photos }) => {
 
 CollectionCollage.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.string).isRequired,
-  products: PropTypes.array.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default CollectionCollage;

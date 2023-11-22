@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_size_quantities",
+  "info": {
+    "displayName": "SizeQuantity",
+    "icon": "archive"
+  },
+  "options": {},
+  "attributes": {
+    "size": {
+      "type": "string"
+    }
+  }
+}

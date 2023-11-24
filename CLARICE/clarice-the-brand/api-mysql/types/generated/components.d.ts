@@ -51,23 +51,11 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
-export interface SharedSizeQuantity extends Schema.Component {
-  collectionName: 'components_shared_size_quantities';
-  info: {
-    displayName: 'SizeQuantity';
-    icon: 'archive';
-  };
-  attributes: {
-    size: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
-      'shared.size-quantity': SharedSizeQuantity;
     }
   }
 }

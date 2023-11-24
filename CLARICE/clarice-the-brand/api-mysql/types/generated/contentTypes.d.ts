@@ -815,12 +815,13 @@ export interface ApiProductSizeProductSize extends Schema.CollectionType {
     singularName: 'product-size';
     pluralName: 'product-sizes';
     displayName: 'ProductSize';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    size: Attribute.String;
+    size: Attribute.Enumeration<['size23', 'size24', 'size25', 'size26']>;
     quantity: Attribute.Integer;
     product: Attribute.Relation<
       'api::product-size.product-size',

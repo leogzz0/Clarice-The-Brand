@@ -4,7 +4,8 @@
   "info": {
     "singularName": "product-size",
     "pluralName": "product-sizes",
-    "displayName": "ProductSize"
+    "displayName": "ProductSize",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,13 @@
   "pluginOptions": {},
   "attributes": {
     "size": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "size23",
+        "size24",
+        "size25",
+        "size26"
+      ]
     },
     "quantity": {
       "type": "integer"

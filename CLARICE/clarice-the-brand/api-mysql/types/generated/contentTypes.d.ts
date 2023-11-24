@@ -786,6 +786,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     color: Attribute.String;
     material: Attribute.String;
     seo: Attribute.Component<'shared.seo', true>;
+    product_sizes: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product-size.product-size'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -797,6 +802,42 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductSizeProductSize extends Schema.CollectionType {
+  collectionName: 'product_sizes';
+  info: {
+    singularName: 'product-size';
+    pluralName: 'product-sizes';
+    displayName: 'ProductSize';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    size: Attribute.String;
+    quantity: Attribute.Integer;
+    product: Attribute.Relation<
+      'api::product-size.product-size',
+      'manyToOne',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product-size.product-size',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product-size.product-size',
       'oneToOne',
       'admin::user'
     > &
@@ -864,6 +905,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
+      'api::product-size.product-size': ApiProductSizeProductSize;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
     }
   }

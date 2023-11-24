@@ -99,6 +99,12 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.seo"
+    },
+    "product_sizes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-size.product-size",
+      "mappedBy": "product"
     }
   }
 }

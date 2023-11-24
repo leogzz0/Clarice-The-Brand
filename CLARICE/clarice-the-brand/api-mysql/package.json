@@ -11,17 +11,21 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-i18n": "4.14.0",
+    "@strapi/plugin-i18n": "4.15.4",
     "@strapi/plugin-seo": "^1.9.6",
-    "@strapi/plugin-users-permissions": "4.14.0",
-    "@strapi/strapi": "4.14.0",
+    "@strapi/plugin-users-permissions": "4.15.4",
+    "@strapi/strapi": "4.15.4",
     "@stripe/stripe-js": "^2.1.7",
     "@types/stripe": "^8.0.417",
     "install": "^0.13.0",
     "mysql": "2.18.1",
     "npm": "^10.2.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.1",
-    "stripe": "^14.4.0"
+    "stripe": "^14.4.0",
+    "styled-components": "^5.2.1"
   },
   "author": {
     "name": "A Strapi developer"

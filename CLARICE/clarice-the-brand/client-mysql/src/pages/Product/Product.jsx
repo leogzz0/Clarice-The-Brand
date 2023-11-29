@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { useState } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -13,7 +14,9 @@ const Product = () => {
   const [selectedImg, setSelectedImg] = useState('img');
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const { selectedSize, setSelectedSize } = useState('');
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
+  console.log(data); 
 
   return (
     <>
@@ -77,6 +80,29 @@ const Product = () => {
               <h1>{data?.attributes?.title}</h1>
               <span className="price">${data?.attributes?.price}</span>
               <p>{data?.attributes?.description}</p>
+              <div className="sizes">
+                <h3>Size:</h3>
+                <div className="size-options">
+                  {data?.attributes?.product_sizes?.data?.map((sizeEntry) => {
+                    const sizeNumber = sizeEntry.attributes.size.replace('size', '');
+                    return (
+                      <div
+                        key={sizeEntry.id}
+                        className={
+                          `size-box ${selectedSize === sizeEntry.attributes.size 
+                            ? 'selected' 
+                            : ''} 
+                          ${sizeEntry.attributes.quantity === 0 ? 'out-of-stock' : ''}`
+                        }
+                        onClick={() => sizeEntry.attributes.quantity > 0 && setSelectedSize(sizeEntry.attributes.size)}
+                      >
+                        {sizeNumber}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
               <div className="quantity">
                 <button
                   onClick={() =>

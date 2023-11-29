@@ -110,6 +110,32 @@
         hr {
             border: 1px solid rgb(238, 237, 237);
         }
+        .sizes {
+            .size-options {
+                display: flex;
+                gap: 10px;
+                margin-top: 10px;
+            }
 
+            .size-box {
+                padding: 5px 10px;
+                border: 1px solid #231F20;
+                cursor: pointer;
+
+                &:hover {
+                background-color: #f5f5f5;
+                }
+
+                &.selected {
+                background-color: #231F20;
+                color: white;
+                }
+
+                &.out-of-stock {
+                text-decoration: line-through;
+                cursor: not-allowed;
+                }
+            }
+        }
     }
 }

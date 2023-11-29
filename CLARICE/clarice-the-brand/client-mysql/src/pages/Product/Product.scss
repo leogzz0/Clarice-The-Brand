@@ -128,12 +128,22 @@
 
                 &.selected {
                 background-color: #231F20;
-                color: white;
+                color: #fff;
                 }
 
                 &.out-of-stock {
-                text-decoration: line-through;
-                cursor: not-allowed;
+                    cursor: not-allowed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(
+                        to top right,
+                        transparent calc(50% - 1px),
+                        #231F20,
+                        transparent calc(50% + 1px)
+                        );
+                    z-index: 1;
                 }
             }
         }

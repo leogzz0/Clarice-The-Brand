@@ -14,7 +14,7 @@ const Product = () => {
   const [selectedImg, setSelectedImg] = useState('img');
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
-  const { selectedSize, setSelectedSize } = useState('');
+  const [ selectedSize, setSelectedSize ] = useState('');
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
   console.log(data); 
 
@@ -62,9 +62,6 @@ const Product = () => {
                   alt=""
                   onClick={() => setSelectedImg('img4')}
                 />
-                {/* <img src={data?.attributes?.img?.data?.attributes?.url} alt="" onClick={e=>setSelectedImg(2)}/>
-                          <img src={data?.attributes?.img?.data?.attributes?.url} alt="" onClick={e=>setSelectedImg(3)}/>
-                          <img src={data?.attributes?.img?.data?.attributes?.url} alt="" onClick={e=>setSelectedImg(4)}/> */}
               </div>
               <div className="mainImg">
                 <img
@@ -116,18 +113,23 @@ const Product = () => {
               </div>
               <button
                 className="add"
-                onClick={() =>
-                  dispatch(
-                    addToCart({
-                      id: data.id,
-                      title: data.attributes.title,
-                      description: data.attributes.description,
-                      price: data.attributes.price,
-                      img: data.attributes.img.data.attributes.url,
-                      quantity,
-                    })
-                  )
-                }
+                onClick={() => {
+                  if (selectedSize) {
+                    dispatch(
+                      addToCart({
+                        id: data.id,
+                        title: data.attributes.title,
+                        description: data.attributes.description,
+                        price: data.attributes.price,
+                        img: data.attributes.img.data.attributes.url,
+                        size: selectedSize,
+                        quantity,
+                      })
+                    );
+                  } else {
+                    alert('Please select a size before adding to cart.');
+                  }
+                }}
               >
                 <AddShoppingCartIcon /> ADD TO CART
               </button>

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import './Cart.scss';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
@@ -40,14 +41,16 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <h1>Products in your cart</h1>
+      <h1>SHOPPING CART</h1>
       {products?.map(item=>(
         <div className="item" key={item.id}>
           <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" />
           <div className="details">
             <h1>{item.title}</h1>
-            <div className="price">{item.quantity} x ${item.price}</div>
-            <p>{item.description?.substring(0,25)}</p>
+            <div className="price">Size: {item.size.replace('size', '')} (MX)</div>
+            <div className="price">Quantity: {item.quantity}</div>
+            <div className="price">${totalPrice()}</div>
+            <p>{item.description?.substring(0,50)}</p>
           </div>
           <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
         </div>

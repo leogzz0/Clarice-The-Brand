@@ -10,7 +10,7 @@
 
     h1 {
         margin-bottom: 30px;
-        color: gray;
+        color: #000;
         font-weight: 400;
         font-size: 24px;
     }
@@ -46,12 +46,16 @@
         }
 
         .delete {
-            color: red;
-            font-size: 30px;
+            color: #000;
+            font-size: 25px;
             cursor: pointer;
+            &:hover {
+                font-size: 30px;
+                transition: font-size 0.3s ease-in-out;
+            }
         }
     }
-
+    
     .total {
         display: flex;
         justify-content: space-between;

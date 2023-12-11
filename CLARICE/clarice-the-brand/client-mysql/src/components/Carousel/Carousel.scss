@@ -1,0 +1,27 @@
+.carousel-section {
+  display: flex;
+  width: 100%;
+
+  .carousel-title {
+    width: 20%;
+    // Additional styles for title
+  }
+
+  .carousel {
+    width: 80%;
+    // Additional styles for carousel
+
+    .carousel-container {
+      display: flex;
+      align-items: center;
+
+      .carousel-item {
+        // Styles for your product card
+      }
+
+      button {
+        // Styles for navigation buttons
+      }
+    }
+  }
+}

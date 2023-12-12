@@ -1,25 +1,40 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import './Success.scss';
 
 function Success() {
   const location = useLocation();
+  const navigate = useNavigate();
   const query = new URLSearchParams(location.search);
   const isSuccess = query.get('success') === 'true';
 
+  const handleGoHome = () => {
+    navigate('/');
+  };
+
   return (
-    <div>
+    <div className={`success-page ${isSuccess ? 'success' : 'cancelled'}`}>
       {isSuccess ? (
-        <div>
-          <h1>Thank you for your purchase!</h1>
-          <p>Your order has been processed successfully.</p>
-          {/* You can add more details like order summary, etc. here */}
-        </div>
+        <>
+          <CheckCircleIcon className="icon success-icon" />
+          <h1>Payment Successful</h1>
+          <p>Thank you for your purchase! Your order has been processed successfully.</p>
+          <p>You would receive an email with the order details.</p>
+          <div className="order-details">
+            <p>Order ID: </p>
+            <p>Estimated Delivery: </p>
+          </div>
+        </>
       ) : (
-        <div>
+        <>
+          <CancelIcon className="icon cancel-icon" />
           <h1>Transaction Cancelled</h1>
-          <p>Your order was not completed. Please try again.</p>
-        </div>
+          <p>We are sorry, your order was not completed. Please try again.</p>
+        </>
       )}
+      <button className="home-button" onClick={handleGoHome}>Keep Shopping</button>
     </div>
   );
 }

@@ -1,0 +1,128 @@
+$color-white: #fff;
+$color-black: #000;
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 0px;
+
+    .wrapper {
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .item {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            padding: 10px; 
+        }
+
+        .left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            .link {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 300;
+                transition: transform 0.3s ease;
+                &:hover {
+                    transform: scale(1.1);
+                    font-weight: 400;
+                }
+                &.active {
+                    color: $color-black;
+                }
+
+                &.white {
+                    color: $color-white;
+                }
+            }
+        }
+        .center {
+            flex: 1;
+            font-size: 50px;
+            letter-spacing: 0px;
+            text-align: center;
+            .link {
+                font-family: 'Bebas Neue', cursive;
+                &.active {
+                    color: $color-black;
+                }
+
+                &.white {
+                    color: $color-white;
+                }
+            }
+        }
+
+        .right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            justify-content: flex-end;
+
+            .link {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 300;
+                transition: transform 0.3s ease;
+                &:hover {
+                transform: scale(1.1);
+                font-weight: 400;
+                }
+                &.active {
+                    color: $color-black;
+                }
+
+                &.white {
+                    color: $color-white;
+                }
+            }
+
+            .icons {
+                display: flex;
+                gap: 15px;
+                color: #777;
+                cursor: pointer;
+
+                .searchIcon,
+                .profileIcon,
+                .wishlistIcon {
+                    transition: transform 0.3s ease;
+                    &:hover {
+                        transform: scale(1.1);
+                        color: #111
+                    }
+                }
+
+                .cartIcon {
+                    position: relative;
+                    transition: transform 0.3s ease;
+                    &:hover {
+                        transform: scale(1.1);
+                        color: #111
+                    }
+
+                    span {
+                        font-size: 12px;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        background-color: #111;
+                        color: #fff;
+                        position: absolute;
+                        right: -10px;
+                        top: -10px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}

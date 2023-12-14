@@ -1,0 +1,51 @@
+.featured-editorial {
+  position: relative;
+  color: white;
+
+  .editorial-image {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+  
+  .content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .season {
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .launch-title {
+      font-size: 3em;
+      margin: 10px 0;
+      font-family: 'Didot', serif;
+    }
+    
+    .discover-more-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      padding: 5px 15px;
+      border: 1px solid white;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+      
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+}

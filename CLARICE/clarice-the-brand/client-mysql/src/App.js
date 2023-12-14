@@ -12,6 +12,7 @@ import EditorialDetail from './pages/EditorialDetail/EditorialDetail';
 import Brand from './pages/Brand/Brand';
 import About from './pages/About/About';
 import ContactUs from './pages/ContactUs/ContactUs';
+import Success from './pages/Success/Success';
 import './app.scss';
 
 const Layout = () => {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
     path:'/product/:id',
     element:<Product/>
   },
+  {
+    path:'/success',
+    element:<Success/>
+  }
 ]);
 
 // define router

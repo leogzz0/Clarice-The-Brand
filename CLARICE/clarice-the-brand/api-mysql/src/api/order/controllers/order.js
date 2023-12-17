@@ -17,9 +17,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             .service("api::product.product")
             .findOne(product.id);
 
-          // const imageUrl = `http://localhost:1337${product.img}`;
           const imageUrl = 'https://i.imgur.com/EHyR2nP.png';
-          // const imageUrl = '/public/uploads/clarice_silver_stiletto_boots_fca57244be.jpeg'
 
           return {
             price_data: {

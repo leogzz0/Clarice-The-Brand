@@ -42,6 +42,7 @@ $color-black: #000;
                 }
             }
         }
+
         .center {
             flex: 1;
             font-size: 50px;
@@ -124,5 +125,82 @@ $color-black: #000;
                 }
             }
         }
+
+        .burger-menu {
+        flex: 1;
+        display: flex;
+        align-items: center;
+            button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0px;
+            }
+            
+            .burger-icon {
+                color: $color-black;
+            }
+        }    
+
+        .center-mobile {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .link {
+                font-family: 'Bebas Neue', cursive;
+                font-size: 20px;
+                &.active {
+                    color: $color-black;
+                }
+
+                &.white {
+                    color: $color-white;
+                }
+            }
+        }
+
+        .right-mobile {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            .cartIcon {
+                position: relative;
+
+                span {
+                    font-size: 12px;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background-color: #111;
+                    color: #fff;
+                    position: absolute;
+                    right: -10px;
+                    top: -5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+
+// Media query for large screens to hide the burger menu
+@media (min-width: 769px) {
+    .burger-menu {
+        display: none;
+    }
+}
+
+// Media query for small screens to adjust styles
+@media (max-width: 768px) {
+    .navbar .wrapper .left, .navbar .wrapper .center, .navbar .wrapper .right {
+        display: none;
     }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -74,7 +74,7 @@ const Navbar = () => {
             <PersonOutlineOutlinedIcon className={getLinkClassName('/profileIcon')}/>
             <FavoriteBorderOutlinedIcon className={getLinkClassName('/wishlistIcon')}/>
             <div className="cartIcon" onClick={() => setOpen(!open)}>
-              <ShoppingCartOutlinedIcon className={getLinkClassName('/cartIcon', true)}/>
+              <ShoppingBagOutlinedIcon className={getLinkClassName('/cartIcon', true)}/>
               <span>{products.length}</span>
             </div>
           </div>

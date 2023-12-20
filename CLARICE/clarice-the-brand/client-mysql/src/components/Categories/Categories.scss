@@ -46,4 +46,22 @@
             object-fit: cover;
         }
     }
+    @media (max-width: 768px) {
+        flex-direction: column;
+        height: auto;
+
+        .col, .col-l {
+            flex: none;
+            width: 100%;
+
+            .row {
+                height: auto;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
 }

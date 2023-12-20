@@ -37,4 +37,28 @@
             }
         }
     }
+
+    @media (max-width: 768px) {
+        .wrapper {
+            flex-direction: column;
+            align-items: stretch;
+            width: 80%;
+
+            input {
+                width: 100%;
+                margin-bottom: 10px;
+                border-radius: 5px;
+            }
+
+            button {
+                width: 100%;
+                border-radius: 5px;
+            }
+
+            .icons {
+                justify-content: center;
+                margin-top: 15px;
+            }
+        }
+    }
 }

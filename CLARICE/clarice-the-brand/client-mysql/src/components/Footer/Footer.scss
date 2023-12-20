@@ -67,4 +67,40 @@
 
         }
     }
+
+    @media (max-width: 768px) {
+        margin: 30px;
+
+        .top {
+            flex-direction: column;
+
+            .item {
+                width: 100%;
+                text-align: left;
+                margin-bottom: 10px;
+            }
+        }
+
+        .bottom {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .left, .right {
+                margin-bottom: 20px;
+                .logo {
+                    font-size: 20px;
+                }
+                .copyright {
+                    font-size: 5px;
+                }
+            }
+
+            .right {
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
 }

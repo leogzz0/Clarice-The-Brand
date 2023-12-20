@@ -136,6 +136,67 @@ $color-black: #000;
             }
         }
 
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 1500;
+            overflow-y: auto;
+            transition: left 0.3s ease;
+
+            .menu-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px;
+
+                .menu-title {
+                    font-family: 'Bebas Neue', cursive;
+                    font-size: 30px;
+                    color: $color-black;
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                    flex-grow: 1;
+                    text-align: center;
+                }
+
+                .close-btn {
+                    cursor: pointer;
+                    flex-shrink: 0;
+                }
+            }
+
+            .separator {
+                border-bottom: 1px solid #000;
+                margin: 10px 0px 20px; 
+            }
+
+            .menu-content {
+                padding: 20px;
+
+                a {
+                    display: block;
+                    font-size: 18px;
+                    margin-bottom: 15px;
+                    color: $color-black;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            &.mobile-menu-open {
+                left: 0;
+            }
+        }
+
         .burger-menu {
         flex: 1;
         display: flex;
@@ -162,7 +223,7 @@ $color-black: #000;
             align-items: center;
             .link {
                 font-family: 'Bebas Neue', cursive;
-                font-size: 20px;
+                font-size: 30px;
                 &.active {
                     color: $color-black;
                 }
@@ -179,8 +240,10 @@ $color-black: #000;
             justify-content: flex-end;
             align-items: center;
             gap: 10px;
+            
             .cartIcon {
                 position: relative;
+                cursor: pointer;
 
                 span {
                     font-size: 12px;

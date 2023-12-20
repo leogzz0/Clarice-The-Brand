@@ -4,6 +4,7 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import CloseIcon from '@mui/icons-material/Close';
 import { useMediaQuery } from 'react-responsive';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -13,7 +14,8 @@ import './Navbar.scss';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isVisible } = useNavbarVisibility();
   const products = useSelector((state) => state.cart.products);
   const location = useLocation();
@@ -39,13 +41,17 @@ const Navbar = () => {
     };
   }, []);
 
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className={`navbar ${!isVisible ? 'hidden' : ''} ${scrolled ? 'scrolled' : ''}`}>
       <div className="wrapper">
         {isMobile ? (
           <>
             <div className='burger-menu'>
-              <button onClick={() => setOpen(!open)}>
+              <button onClick={() => setMobileMenuOpen(true)}>
                 <MenuOutlinedIcon className='burger-icon'/>
               </button>
             </div>
@@ -56,36 +62,45 @@ const Navbar = () => {
             </div>
             <div className="right-mobile">
               <SearchIcon className="icon" />
-              <div className="cartIcon" onClick={() => setOpen(!open)}>
+              <div className="cartIcon" onClick={() => setCartOpen(!cartOpen)}>
                 <ShoppingBagOutlinedIcon />
                 <span>{products.length}</span>
               </div>
             </div>
-            {open && (
-              <div className='mobile-menu'>
-                <Link className={getLinkClassName('/products/1')} to='/products/1'>
+            <div className={`mobile-menu ${mobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+              <div className="menu-header">
+                <Link to="/" className="menu-title" onClick={() => setMobileMenuOpen(false)}>
+                  Clarice The Brand
+                </Link>
+                <div className="close-btn" onClick={() => setMobileMenuOpen(false)}>
+                  <CloseIcon />
+                </div>
+              </div>
+              <div className="separator"></div>
+              <div className="menu-content">
+                <Link onClick={closeMobileMenu} className={getLinkClassName('/products/1')} to='/products/1'>
                   SHOP
                 </Link>
-                <Link className={getLinkClassName('/collection')} to='/collection'>
+                <Link Click={closeMobileMenu} className={getLinkClassName('/collection')} to='/collection'>
                   COLLECTIONS
                 </Link>
-                <Link className={getLinkClassName('/editorial')} to='/editorial'>
+                <Link Click={closeMobileMenu} className={getLinkClassName('/editorial')} to='/editorial'>
                   EDITORIAL
                 </Link>
-                <Link className={getLinkClassName('/brand')} to='/brand'>
+                <Link Click={closeMobileMenu} className={getLinkClassName('/brand')} to='/brand'>
                   BRAND
                 </Link>
-                <Link className={getLinkClassName('/about')} to='/about'>
+                <Link Click={closeMobileMenu} className={getLinkClassName('/about')} to='/about'>
                   ABOUT
                 </Link>
-                <Link className={getLinkClassName('/contact')} to='/contact'>
+                <Link Click={closeMobileMenu} className={getLinkClassName('/contact')} to='/contact'>
                   CONTACT
                 </Link>
-                <Link className={getLinkClassName('/stores')} to='/stores'>
+                <Link Click={closeMobileMenu} className={getLinkClassName('/stores')} to='/stores'>
                   STORES
                 </Link>
               </div>
-            )}
+            </div>
           </>
         ) : (
           <>
@@ -115,7 +130,6 @@ const Navbar = () => {
               <Link className={getLinkClassName('/')} to="/">
                 CLARICE THE BRAND
               </Link>
-              {/*<img src='./img/clarice.png' alt='' />*/}
             </div>
             <div className="right">
               <div className="item">
@@ -137,7 +151,7 @@ const Navbar = () => {
                 <SearchIcon className={getLinkClassName('/searchIcon')}/>
                 <PersonOutlineOutlinedIcon className={getLinkClassName('/profileIcon')}/>
                 <FavoriteBorderOutlinedIcon className={getLinkClassName('/wishlistIcon')}/>
-                <div className="cartIcon" onClick={() => setOpen(!open)}>
+                <div className="cartIcon" onClick={() => setCartOpen(!cartOpen)}>
                   <ShoppingBagOutlinedIcon className={getLinkClassName('/cartIcon', true)}/>
                   <span>{products.length}</span>
                 </div>
@@ -146,7 +160,7 @@ const Navbar = () => {
           </>
         )}
       </div>
-      {open && <Cart />}
+      {cartOpen && <Cart />}
     </div>
   );
 };

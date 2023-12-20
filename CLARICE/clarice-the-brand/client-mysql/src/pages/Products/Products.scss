@@ -96,11 +96,14 @@
 
                 &:hover {
                     background-color: #ffc3b9;
-                    // color: #000;
                     animation: pulse 0.5s ease;
                     text-decoration: none;
                 }
             }
         }
+    }
+
+    @media (max-width: 768px) {
+        padding: 5px 20px;
     }
 }

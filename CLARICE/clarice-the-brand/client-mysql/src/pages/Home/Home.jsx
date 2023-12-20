@@ -7,16 +7,13 @@ import './Home.scss';
 
 const Home = () => {
   return (
-    <>
-      <div className='navbar-spacer'></div>
-      <div className="home">
-        <Slider />
-        <FeaturedProducts type="featured" />
-        <Categories />
-        <FeaturedProducts type="trending" />
-        <Contact />
-      </div>
-    </>
+    <div className="home">
+      <Slider />
+      <FeaturedProducts type="featured" />
+      <Categories />
+      <FeaturedProducts type="trending" />
+      <Contact />
+    </div>
   );
 };
 

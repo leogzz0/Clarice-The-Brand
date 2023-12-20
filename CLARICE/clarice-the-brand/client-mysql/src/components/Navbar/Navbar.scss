@@ -5,7 +5,17 @@ $color-black: #000;
     position: sticky;
     top: 0;
     z-index: 1000;
-    height: 0px;
+    height: auto;
+    background-color: $color-white;
+    transition: background-color 0.3s ease;
+
+    &.hidden {
+        height: 0 !important;
+    }
+
+    &.scrolled {
+        background-color: transparent;
+    }
 
     .wrapper {
         padding: 10px 20px;

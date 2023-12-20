@@ -13,6 +13,7 @@ import Brand from './pages/Brand/Brand';
 import About from './pages/About/About';
 import ContactUs from './pages/ContactUs/ContactUs';
 import Success from './pages/Success/Success';
+import { NavbarProvider } from './contexts/NavbarContext';
 import './app.scss';
 
 const Layout = () => {
@@ -90,9 +91,11 @@ const router = createBrowserRouter([
 // define router
 function App() {
   return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
+    <NavbarProvider>
+      <div>
+        <RouterProvider router={router} />
+      </div>
+    </NavbarProvider>
   );
 }
 

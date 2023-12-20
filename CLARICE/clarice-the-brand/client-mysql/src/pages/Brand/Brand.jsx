@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavbarVisibility } from '../../contexts/NavbarContext';
 import './Brand.scss';
 
 const Brand = () => {
@@ -12,6 +13,15 @@ const Brand = () => {
   const slogan = 'Stand Out';
 
   const [current, setCurrent] = React.useState(0);
+
+  const { setIsVisible } = useNavbarVisibility();
+
+  useEffect(() => {
+    setIsVisible(false);
+    return () => {
+      setIsVisible(true);
+    };
+  }, [setIsVisible]);
 
   React.useEffect(() => {
     const interval = setInterval(() => {

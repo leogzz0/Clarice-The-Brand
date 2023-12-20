@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
@@ -7,11 +7,14 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { useMediaQuery } from 'react-responsive';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useNavbarVisibility } from '../../contexts/NavbarContext';
 import Cart from '../Cart/Cart';
 import './Navbar.scss';
 
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { isVisible } = useNavbarVisibility();
   const products = useSelector((state) => state.cart.products);
   const location = useLocation();
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -23,8 +26,21 @@ const Navbar = () => {
     return `link${isActive ? ' active' : ''}${isWhite ? ' white' : ''}`;
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="navbar">
+    <div className={`navbar ${!isVisible ? 'hidden' : ''} ${scrolled ? 'scrolled' : ''}`}>
       <div className="wrapper">
         {isMobile ? (
           <>

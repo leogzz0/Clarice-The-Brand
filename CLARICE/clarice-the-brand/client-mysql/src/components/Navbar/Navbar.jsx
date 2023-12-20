@@ -41,6 +41,10 @@ const Navbar = () => {
     };
   }, []);
 
+  const closeCart = () => {
+    setCartOpen(false);
+  };
+
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
   };
@@ -160,7 +164,7 @@ const Navbar = () => {
           </>
         )}
       </div>
-      {cartOpen && <Cart />}
+      <Cart isCartOpen={cartOpen} isMobile={isMobile} onClose={closeCart} />
     </div>
   );
 };

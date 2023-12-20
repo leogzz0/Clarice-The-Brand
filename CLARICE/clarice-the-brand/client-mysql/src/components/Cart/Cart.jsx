@@ -2,13 +2,16 @@
 import React from 'react';
 import './Cart.scss';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import CloseIcon from '@mui/icons-material/Close';
 import { useSelector } from 'react-redux';
 import { removeItem, resetCart } from '../../redux/cartReducer';
 import { useDispatch } from 'react-redux';
 import { loadStripe } from '@stripe/stripe-js';
 import { makeRequest } from '../../makeRequest';
+import PropTypes from 'prop-types';
 
-const Cart = () => {
+const Cart = ({ isCartOpen, isMobile, onClose }) => {
+  const cartClass = `cart ${isCartOpen ? 'open' : ''} ${isMobile ? 'mobile' : ''}`;
   const products = useSelector(state => state.cart.products);
   const dispatch = useDispatch();
   
@@ -41,7 +44,8 @@ const Cart = () => {
   };
 
   return (
-    <div className="cart">
+    <div className={cartClass}>
+      <CloseIcon className="close-icon" onClick={onClose} />
       <h1>SHOPPING CART</h1>
       {products?.map(item=>(
         <div className="item" key={item.id}>
@@ -64,6 +68,12 @@ const Cart = () => {
       <span className='reset' onClick={() => dispatch(resetCart())}>Reset Cart</span>
     </div>
   );
+};
+
+Cart.propTypes = {
+  isCartOpen: PropTypes.bool,
+  isMobile: PropTypes.bool,
+  onClose: PropTypes.func,
 };
 
 export default Cart;

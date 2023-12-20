@@ -1,12 +1,36 @@
 .cart {
-    position: absolute;
-    right: 20px;
-    top: 80px;
-    z-index: 999;
+    box-sizing: border-box;
+    position: fixed;
+    overflow-y: auto;
+    right: -100%;
+    top: 0;
+    bottom: 0;
+    width: 500px;
     background-color: white;
     padding: 20px;
-    -webkit-box-shadow: 0px 0px 7px -5px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 7px -5px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 7px -5px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 7px -4px rgba(0, 0, 0, 0.7);
+    transition: right 0.3s ease;
+
+    &.open {
+        right: 0;
+    }
+
+    &.mobile {
+        width: 100%;
+    }
+
+    .close-icon {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        cursor: pointer;
+        color: #000;
+
+        &:hover {
+            color: #666;
+        }
+    }
 
     h1 {
         margin-bottom: 30px;
@@ -29,7 +53,7 @@
 
         .details {
             h1 {
-                color: #231F20;
+                color: #231f20;
                 font-size: 18px;
                 font-weight: 500;
             }
@@ -41,7 +65,7 @@
             }
 
             .price {
-                color: #231F20;
+                color: #231f20;
             }
         }
 
@@ -54,7 +78,7 @@
             }
         }
     }
-    
+
     .total {
         display: flex;
         justify-content: space-between;
@@ -64,7 +88,7 @@
     }
 
     button {
-        width: 200px;
+        width: 100%;
         padding: 10px;
         display: flex;
         align-items: center;
@@ -72,7 +96,7 @@
         gap: 20px;
         cursor: pointer;
         border: none;
-        background-color: #231F20;
+        background-color: #231f20;
         color: white;
         font-weight: 500;
         margin-bottom: 20px;
@@ -82,5 +106,59 @@
         color: red;
         font-size: 12px;
         cursor: pointer;
+    }
+}
+
+@media (max-width: 768px) {
+    .cart {
+        box-sizing: border-box;
+        right: -100%;
+        width: 100%;
+        padding: 20px;
+
+        &.open {
+            right: 0;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .item {
+            gap: 10px;
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .details {
+                h1 {
+                    font-size: 16px;
+                }
+
+                p {
+                    font-size: 12px;
+                }
+            }
+
+            .delete {
+                font-size: 20px;
+            }
+        }
+
+        .total {
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px;
+        }
+
+        .reset {
+            font-size: 10px;
+        }
     }
 }

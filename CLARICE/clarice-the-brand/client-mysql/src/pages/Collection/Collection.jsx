@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavbarVisibility } from '../../contexts/NavbarContext';
 import FeaturedCollection from '../../components/FeaturedCollection/FeaturedCollection';
 
 const CollectionData = [
@@ -11,6 +12,15 @@ const CollectionData = [
 ];
 
 const Collection = () => {
+  const { setIsVisible } = useNavbarVisibility();
+
+  useEffect(() => {
+    setIsVisible(false);
+    return () => {
+      setIsVisible(true);
+    };
+  }, [setIsVisible]);
+
   return (
     <div>
       {CollectionData.map((collection, index) => (

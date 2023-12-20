@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavbarVisibility } from '../../contexts/NavbarContext';
 import FeaturedEditorial from '../../components/FeaturedEditorial/FeaturedEditorial';
 
 const EditorialData = [
@@ -11,6 +12,15 @@ const EditorialData = [
 ];
 
 const Editorial = () => {
+  const { setIsVisible } = useNavbarVisibility();
+
+  useEffect(() => {
+    setIsVisible(false);
+    return () => {
+      setIsVisible(true);
+    };
+  }, [setIsVisible]);
+
   return (
     <div>
       {EditorialData.map((editorial, index) => (

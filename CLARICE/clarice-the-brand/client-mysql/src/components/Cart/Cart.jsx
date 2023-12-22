@@ -52,19 +52,25 @@ const Cart = ({ isCartOpen, isMobile, onClose }) => {
           <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" />
           <div className="details">
             <h1>{item.title}</h1>
-            <div className="price">Size: {item.size.replace('size', '')} (MX)</div>
-            <div className="price">Quantity: {item.quantity}</div>
+            <div className="color">{item.color}</div>
+            <div className="size">Size: {item.size.replace('size', '')} (MX)</div>
+            <div className="quantity">Quantity: {item.quantity}</div>
             <div className="price">${item.price}</div>
-            <p>{item.description?.substring(0,50)}</p>
+            {/* <p>{item.description?.substring(0,50)}</p> */}
           </div>
-          <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
+          <div className='delete-container'>
+            <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
+          </div>
         </div>
       ))}
       <div className="total">
         <span>SUBTOTAL</span>
         <span>${totalPrice()}</span>
       </div>
-      <button onClick={handlePayment}>PROCEED TO CHECKOUT</button>
+      <button onClick={handlePayment}>
+        <span className="button-text">PROCEED TO CHECKOUT</span>
+        <span className="button-text button-text-appear">PROCEED TO CHECKOUT</span>
+      </button>
       <span className='reset' onClick={() => dispatch(resetCart())}>Reset Cart</span>
     </div>
   );

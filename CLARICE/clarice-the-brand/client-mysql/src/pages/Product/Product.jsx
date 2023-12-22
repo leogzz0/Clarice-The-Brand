@@ -107,6 +107,7 @@ const Product = () => {
                       description: data.attributes.description,
                       price: data.attributes.price,
                       img: data.attributes.img.data.attributes.url,
+                      color: data.attributes.color,
                       size: selectedSize,
                       quantity: 1,
                     })

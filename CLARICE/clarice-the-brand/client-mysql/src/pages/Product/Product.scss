@@ -39,7 +39,7 @@
 
         .price {
             font-size: 30px;
-            color: #231F20;
+            color: #231f20;
             font-weight: 500;
         }
 
@@ -68,7 +68,7 @@
         .add {
             width: 250px;
             padding: 10px;
-            background-color: #231F20;
+            background-color: #231f20;
             color: white;
             display: flex;
             align-items: center;
@@ -87,7 +87,7 @@
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                color: #231F20;
+                color: #231f20;
                 cursor: pointer;
                 font-size: 14px;
             }
@@ -119,16 +119,16 @@
 
             .size-box {
                 padding: 5px 10px;
-                border: 1px solid #231F20;
+                border: 1px solid #231f20;
                 cursor: pointer;
 
                 &:hover {
-                background-color: #f5f5f5;
+                    background-color: #f5f5f5;
                 }
 
                 &.selected {
-                background-color: #231F20;
-                color: #fff;
+                    background-color: #231f20;
+                    color: #fff;
                 }
 
                 &.out-of-stock {
@@ -140,12 +140,47 @@
                     background: linear-gradient(
                         to top right,
                         transparent calc(50% - 1px),
-                        #231F20,
+                        #231f20,
                         transparent calc(50% + 1px)
-                        );
+                    );
                     z-index: 1;
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .product {
+        flex-direction: column;
+        padding: 5px 20px;
+        gap: 20px;
+
+        .left {
+            flex: none;
+            width: 100%;
+        }
+
+        .right {
+            flex: none;
+            width: 100%;
+            .price {
+                font-size: 24px;
+            }
+            .add {
+                width: 100%;
+                padding: 15px;
+            }
+    }
+
+        .mainImg {
+            max-height: 500px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
         }
     }
 }

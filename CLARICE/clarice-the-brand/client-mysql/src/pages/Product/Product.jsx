@@ -1,13 +1,36 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './Product.scss';
 import useFetch from '../../hooks/useFetch';
+import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartReducer';
+import { useSwipeable } from 'react-swipeable';
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowSize;
+}
 
 const Product = () => {
   const id = useParams().id;
@@ -15,7 +38,37 @@ const Product = () => {
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState('');
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
-  console.log(data);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const size = useWindowSize();
+  const images = [data?.attributes?.img, data?.attributes?.img2, data?.attributes?.img3, data?.attributes?.img4];
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length),
+    onSwipedRight: () => setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
+
+  const ImageIndicator = ({ currentIndex, total }) => {
+    return (
+      <div className="image-indicator">
+        {Array.from({ length: total }, (_, index) => (
+          <span
+            key={index}
+            className={currentIndex === index ? 'active' : ''}
+          >•</span>
+        ))}
+      </div>
+    );
+  };
+
+  ImageIndicator.propTypes = {
+    currentIndex: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+  };
+
+
+  const isSmallScreen = size.width <= 768;
 
   return (
     <div className="product">
@@ -26,49 +79,63 @@ const Product = () => {
       ) : (
         <>
           <div className="left">
-            <div className="images">
-              <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img?.data?.attributes?.url
-                }
-                alt=""
-                onClick={() => setSelectedImg('img')}
-              />
-              <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img2?.data?.attributes?.url
-                }
-                alt=""
-                onClick={() => setSelectedImg('img2')}
-              />
-              <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img3?.data?.attributes?.url
-                }
-                alt=""
-                onClick={() => setSelectedImg('img3')}
-              />
-              <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img4?.data?.attributes?.url
-                }
-                alt=""
-                onClick={() => setSelectedImg('img4')}
-              />
-            </div>
-            <div className="mainImg">
-              <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.[selectedImg]?.data?.attributes?.url
-                }
-                alt=""
-              />
-            </div>
+            {isSmallScreen ? (
+              <>
+                <div {...handlers} className="mainImg">
+                  <img
+                    src={process.env.REACT_APP_UPLOAD_URL + images[currentImageIndex]?.data?.attributes?.url}
+                    alt=""
+                  />
+                </div>
+                <ImageIndicator currentIndex={currentImageIndex} total={images.length} />
+              </>
+            ) : (
+              <>
+                <div className="images">
+                  <img
+                    src={
+                      process.env.REACT_APP_UPLOAD_URL +
+                      data?.attributes?.img?.data?.attributes?.url
+                    }
+                    alt=""
+                    onClick={() => setSelectedImg('img')}
+                  />
+                  <img
+                    src={
+                      process.env.REACT_APP_UPLOAD_URL +
+                      data?.attributes?.img2?.data?.attributes?.url
+                    }
+                    alt=""
+                    onClick={() => setSelectedImg('img2')}
+                  />
+                  <img
+                    src={
+                      process.env.REACT_APP_UPLOAD_URL +
+                      data?.attributes?.img3?.data?.attributes?.url
+                    }
+                    alt=""
+                    onClick={() => setSelectedImg('img3')}
+                  />
+                  <img
+                    src={
+                      process.env.REACT_APP_UPLOAD_URL +
+                      data?.attributes?.img4?.data?.attributes?.url
+                    }
+                    alt=""
+                    onClick={() => setSelectedImg('img4')}
+                  />
+                </div>
+                <div className="mainImg">
+                  <img
+                    src={
+                      process.env.REACT_APP_UPLOAD_URL +
+                      data?.attributes?.[selectedImg]?.data?.attributes?.url
+                    }
+                    alt=""
+                  />
+                </div>
+              </>
+            )}
           </div>
           <div className="right">
             <h1>{data?.attributes?.title}</h1>

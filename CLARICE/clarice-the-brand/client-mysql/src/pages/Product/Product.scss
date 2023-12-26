@@ -159,31 +159,54 @@
         .left {
             flex: none;
             width: 100%;
-        }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-        .right {
-            flex: none;
-            width: 100%;
-            .price {
-                font-size: 24px;
+            .images {
+                display: none;
             }
-            .add {
+            .mainImg {
                 width: 100%;
-                padding: 15px;
+                max-height: 500px;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+            .image-indicator {
+                text-align: center;
+            }
+
+            .image-indicator span {
+                padding: 3px;
+                margin: 0 5px;
+                cursor: pointer;
+                color: #ccc;
+            }
+
+            .image-indicator span.active {
+                color: #231f20;
             }
         }
+    }
 
-        .images {
-            display: none;
-        }
-        .mainImg {
-            max-height: 500px;
+    .right {
+        flex: none;
+        width: 100%;
+        .price {
+            font-size: 20px;
         }
 
-        img {
+        p {
+            font-size: 20px;
+        }
+        .add {
             width: 100%;
-            height: auto;
-            object-fit: cover;
+            padding: 15px;
         }
     }
 }

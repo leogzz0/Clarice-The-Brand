@@ -171,8 +171,11 @@
                 width: 100%;
                 padding: 15px;
             }
-    }
+        }
 
+        .images {
+            display: none;
+        }
         .mainImg {
             max-height: 500px;
         }

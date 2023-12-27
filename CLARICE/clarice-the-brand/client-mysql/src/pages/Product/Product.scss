@@ -192,21 +192,36 @@
                 color: #231f20;
             }
         }
-    }
 
-    .right {
-        flex: none;
-        width: 100%;
-        .price {
-            font-size: 20px;
-        }
-
-        p {
-            font-size: 20px;
-        }
-        .add {
+        .right {
+            flex: none;
             width: 100%;
-            padding: 15px;
+            gap: 15px;
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .price {
+                font-size: 15px;
+            }
+
+            p {
+                font-size: 15px;
+            }
+
+            .quantity {
+                gap: 10px;
+
+                button {
+                    width: 100%;
+                }
+            }
+
+            .add {
+                width: 100%;
+                padding: 10px;
+            }
         }
     }
 }

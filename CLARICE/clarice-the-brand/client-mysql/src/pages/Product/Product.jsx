@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { useState, useEffect } from 'react';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './Product.scss';
 import useFetch from '../../hooks/useFetch';
@@ -184,7 +183,7 @@ const Product = () => {
                 }
               }}
             >
-              <AddShoppingCartIcon /> ADD TO CART
+              ADD TO CART
             </button>
             <div className="links">
               <div className="item">

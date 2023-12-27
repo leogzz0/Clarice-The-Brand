@@ -155,6 +155,7 @@
         flex-direction: column;
         padding: 5px 20px;
         gap: 20px;
+        font-size: 10px;
 
         .left {
             flex: none;
@@ -175,21 +176,21 @@
                 width: 100%;
                 height: auto;
                 object-fit: cover;
+                min-height: 400px;
             }
 
             .image-indicator {
                 text-align: center;
-            }
+                span {
+                    padding: 3px;
+                    margin: 0 5px;
+                    cursor: pointer;
+                    color: #ccc;
 
-            .image-indicator span {
-                padding: 3px;
-                margin: 0 5px;
-                cursor: pointer;
-                color: #ccc;
-            }
-
-            .image-indicator span.active {
-                color: #231f20;
+                    &.active {
+                        color: #231f20;
+                    }
+                }
             }
         }
 
@@ -207,7 +208,7 @@
             }
 
             p {
-                font-size: 15px;
+                font-size: 12px;
             }
 
             .quantity {
@@ -218,9 +219,27 @@
                 }
             }
 
+            .sizes {
+                .size-box {
+                    font-size: 10px;
+                }
+            }
+
             .add {
                 width: 100%;
                 padding: 10px;
+                font-size: 10px;
+            }
+
+            .links {
+                gap: 10px;
+                .item {
+                    font-size: 10px;
+                }
+            }
+
+            .info {
+                font-size: 10px;
             }
         }
     }

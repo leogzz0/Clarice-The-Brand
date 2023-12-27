@@ -69,15 +69,20 @@
     }
 
     @media (max-width: 768px) {
-        margin: 30px;
+        margin: 20px;
 
         .top {
             flex-direction: column;
+            gap: 20px;
 
             .item {
                 width: 100%;
                 text-align: left;
                 margin-bottom: 10px;
+                font-size: 11px;
+                h1 {
+                    font-size: 12px;
+                }
             }
         }
 

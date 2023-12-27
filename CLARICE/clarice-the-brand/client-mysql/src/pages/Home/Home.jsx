@@ -2,7 +2,7 @@ import React from 'react';
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts.jsx';
 import Slider from '../../components/Slider/Slider';
 import Categories from '../../components/Categories/Categories';
-import Contact from '../../components/Contact/Contact';
+// import Contact from '../../components/Contact/Contact';
 import './Home.scss';
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
       <FeaturedProducts type="featured" />
       <Categories />
       <FeaturedProducts type="trending" />
-      <Contact />
+      {/* <Contact /> */}
     </div>
   );
 };

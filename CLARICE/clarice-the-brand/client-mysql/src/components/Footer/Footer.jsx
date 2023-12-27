@@ -16,11 +16,13 @@ const Footer = () => {
         </div>
         <div className="item">
           <h1>Links</h1>
-          <span>FAQ</span>
-          <span>Pages</span>
-          <span>Stores</span>
           <span>Compare</span>
           <span>Cookies</span>
+        </div>
+        <div className="item">
+          <h1>Contact</h1>
+          <Link to='/brand'>Instagram</Link>
+          <Link to='/contact'>Facebook</Link>
         </div>
         <div className="item">
           <h1>About</h1>
@@ -31,15 +33,6 @@ const Footer = () => {
             so that you can be your true, most fashion self. As Marylin Monroe
             once said, “Give a woman the right shoes and she can conquer the
             world” and we couldn’t agree more!
-          </span>
-        </div>
-        <div className="item">
-          <h1>Contact</h1>
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor.
           </span>
         </div>
       </div>

@@ -35,7 +35,10 @@ const Product = () => {
   const id = useParams().id;
   const [selectedImg, setSelectedImg] = useState('img');
   const dispatch = useDispatch();
-  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedSize, setSelectedSize] = useState({
+    id: null,
+    size: '',
+  });
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const size = useWindowSize();
@@ -149,12 +152,15 @@ const Product = () => {
                     <div
                       key={sizeEntry.id}
                       className={
-                        `size-box ${selectedSize === sizeEntry.attributes.size
+                        `size-box ${selectedSize.size === sizeEntry.attributes.size
                           ? 'selected'
                           : ''} 
                           ${sizeEntry.attributes.quantity === 0 ? 'out-of-stock' : ''}`
                       }
-                      onClick={() => sizeEntry.attributes.quantity > 0 && setSelectedSize(sizeEntry.attributes.size)}
+                      onClick={() => sizeEntry.attributes.quantity > 0 && setSelectedSize({
+                        id: sizeEntry.id,
+                        size: sizeEntry.attributes.size
+                      })}
                     >
                       {sizeNumber}
                     </div>
@@ -174,7 +180,8 @@ const Product = () => {
                       price: data.attributes.price,
                       img: data.attributes.img.data.attributes.url,
                       color: data.attributes.color,
-                      size: selectedSize,
+                      size: selectedSize.size,
+                      sizeId: selectedSize.id,
                       quantity: 1,
                     })
                   );

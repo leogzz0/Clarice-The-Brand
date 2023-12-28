@@ -56,6 +56,7 @@ const Cart = ({ isCartOpen, isMobile, onClose }) => {
             <div className="size">Size: {item.size.replace('size', '')} (MX)</div>
             <div className="quantity">Quantity: {item.quantity}</div>
             <div className="price">${item.price}</div>
+            <div className="price">size id: {item.sizeId}</div>
             {/* <p>{item.description?.substring(0,50)}</p> */}
           </div>
           <div className='delete-container'>

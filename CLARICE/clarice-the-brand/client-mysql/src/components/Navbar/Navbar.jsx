@@ -55,7 +55,7 @@ const Navbar = () => {
         {isMobile ? (
           <>
             <div className='burger-menu'>
-              <button onClick={() => setMobileMenuOpen(true)}>
+              <button aria-label='burger-icon' onClick={() => setMobileMenuOpen(true)}>
                 <MenuOutlinedIcon className='burger-icon'/>
               </button>
             </div>

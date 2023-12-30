@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Web site created using create-react-app" />
     <link rel="icon" href="./img/clarice_black.png">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" as="style">
     <style>
         * {
             font-family: "Poppins", sans-serif;
@@ -14,15 +16,31 @@
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bodoni+Moda:wght@500;900&family=Charis+SIL:wght@400;700&family=Cormorant+Garamond:wght@300;400;700&family=Libre+Caslon+Display&family=Mea+Culpa&family=Montserrat:wght@600&family=Oswald:wght@200;400&family=Poppins:wght@300;400&display=swap"
-        rel="stylesheet">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400&display=swap"
+            rel="stylesheet">
+    </noscript>
     <title>Clarice The Brand | Official Store</title>
 </head>
 
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+        const loadGoogleFonts = () => {
+            const link1 = document.createElement('link');
+            link1.href = 'https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap';
+            link1.rel = 'stylesheet';
+            document.head.appendChild(link1);
+
+            const link2 = document.createElement('link');
+            link2.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap';
+            link2.rel = 'stylesheet';
+            document.head.appendChild(link2);
+        };
+
+        document.addEventListener('DOMContentLoaded', loadGoogleFonts);
+    </script>
 </body>
 
 </html>

@@ -2,278 +2,292 @@ $color-white: #fff;
 $color-black: #000;
 
 .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: auto;
-    background-color: $color-white;
-    transition: background-color 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: auto;
+  background-color: $color-white;
+  transition: background-color 0.3s ease;
 
-    &.hidden {
-        height: 0 !important;
+  &.hidden {
+    height: 0 !important;
+  }
+
+  &.scrolled {
+    background-color: transparent;
+  }
+
+  .wrapper {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .item {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      padding: 10px;
     }
 
-    &.scrolled {
-        background-color: transparent;
+    .left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .link {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 300;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1);
+          font-weight: 400;
+        }
+
+        &.active {
+          color: $color-black;
+        }
+
+        &.white {
+          color: $color-white;
+        }
+      }
     }
 
-    .wrapper {
-        padding: 10px 20px;
+    .center {
+      flex: 1;
+      font-size: 50px;
+      letter-spacing: 0px;
+      text-align: center;
+
+      .link {
+        font-family: 'Bebas Neue', cursive;
+
+        &.active {
+          color: $color-black;
+        }
+
+        &.white {
+          color: $color-white;
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      justify-content: flex-end;
+
+      .link {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 300;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1);
+          font-weight: 400;
+        }
+
+        &.active {
+          color: $color-black;
+        }
+
+        &.white {
+          color: $color-white;
+        }
+      }
+
+      .icons {
+        display: flex;
+        gap: 15px;
+        color: #777;
+        cursor: pointer;
+
+        .searchIcon,
+        .profileIcon,
+        .wishlistIcon {
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.1);
+            color: #111;
+          }
+        }
+
+        .cartIcon {
+          position: relative;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.1);
+            color: #111;
+          }
+
+          span {
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #111;
+            color: #fff;
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      z-index: 1500;
+      overflow-y: auto;
+      transition: left 0.3s ease;
+
+      .menu-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 20px;
 
-        .item {
-            display: flex;
-            align-items: center;
-            font-size: 15px;
-            padding: 10px; 
+        .menu-title {
+          font-family: 'Bebas Neue', cursive;
+          font-size: 30px;
+          color: $color-black;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: none;
+          }
+
+          flex-grow: 1;
+          text-align: center;
         }
 
-        .left {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            .link {
-                font-family: 'Poppins', sans-serif;
-                font-weight: 300;
-                transition: transform 0.3s ease;
-                &:hover {
-                    transform: scale(1.1);
-                    font-weight: 400;
-                }
-                &.active {
-                    color: $color-black;
-                }
-
-                &.white {
-                    color: $color-white;
-                }
-            }
+        .close-btn {
+          cursor: pointer;
+          flex-shrink: 0;
         }
+      }
 
-        .center {
-            flex: 1;
-            font-size: 50px;
-            letter-spacing: 0px;
-            text-align: center;
-            .link {
-                font-family: 'Bebas Neue', cursive;
-                &.active {
-                    color: $color-black;
-                }
+      .separator {
+        border-bottom: 1px solid #000;
+        margin: 10px 0px 20px;
+      }
 
-                &.white {
-                    color: $color-white;
-                }
-            }
+      .menu-content {
+        padding: 20px;
+
+        a {
+          display: block;
+          font-size: 18px;
+          margin-bottom: 15px;
+          color: $color-black;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
+      }
 
-        .right {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            justify-content: flex-end;
+      &.mobile-menu-open {
+        left: 0;
+      }
+    }
 
-            .link {
-                font-family: 'Poppins', sans-serif;
-                font-weight: 300;
-                transition: transform 0.3s ease;
-                &:hover {
-                transform: scale(1.1);
-                font-weight: 400;
-                }
-                &.active {
-                    color: $color-black;
-                }
+    .burger-menu {
+      flex: 1;
+      display: flex;
+      align-items: center;
 
-                &.white {
-                    color: $color-white;
-                }
-            }
-
-            .icons {
-                display: flex;
-                gap: 15px;
-                color: #777;
-                cursor: pointer;
-
-                .searchIcon,
-                .profileIcon,
-                .wishlistIcon {
-                    transition: transform 0.3s ease;
-                    &:hover {
-                        transform: scale(1.1);
-                        color: #111
-                    }
-                }
-
-                .cartIcon {
-                    position: relative;
-                    transition: transform 0.3s ease;
-                    &:hover {
-                        transform: scale(1.1);
-                        color: #111
-                    }
-
-                    span {
-                        font-size: 12px;
-                        width: 20px;
-                        height: 20px;
-                        border-radius: 50%;
-                        background-color: #111;
-                        color: #fff;
-                        position: absolute;
-                        right: -10px;
-                        top: -10px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                }
-            }
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            z-index: 1500;
-            overflow-y: auto;
-            transition: left 0.3s ease;
-
-            .menu-header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 20px;
-
-                .menu-title {
-                    font-family: 'Bebas Neue', cursive;
-                    font-size: 30px;
-                    color: $color-black;
-                    text-decoration: none;
-                    &:hover {
-                        text-decoration: none;
-                    }
-                    flex-grow: 1;
-                    text-align: center;
-                }
-
-                .close-btn {
-                    cursor: pointer;
-                    flex-shrink: 0;
-                }
-            }
-
-            .separator {
-                border-bottom: 1px solid #000;
-                margin: 10px 0px 20px; 
-            }
-
-            .menu-content {
-                padding: 20px;
-
-                a {
-                    display: block;
-                    font-size: 18px;
-                    margin-bottom: 15px;
-                    color: $color-black;
-                    text-decoration: none;
-
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
-            }
-
-            &.mobile-menu-open {
-                left: 0;
-            }
-        }
-
-        .burger-menu {
-        flex: 1;
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
         display: flex;
         align-items: center;
-            button {
-                background: none;
-                border: none;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0px;
-            }
-            
-            .burger-icon {
-                color: $color-black;
-            }
-        }    
+        justify-content: center;
+        padding: 0px;
+      }
 
-        .center-mobile {
-            flex: 2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .link {
-                font-family: 'Bebas Neue', cursive;
-                font-size: 25px;
-                &.active {
-                    color: $color-black;
-                }
-
-                &.white {
-                    color: $color-white;
-                }
-            }
-        }
-
-        .right-mobile {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 10px;
-            
-            .cartIcon {
-                position: relative;
-                cursor: pointer;
-
-                span {
-                    font-size: 12px;
-                    width: 20px;
-                    height: 20px;
-                    border-radius: 50%;
-                    background-color: #111;
-                    color: #fff;
-                    position: absolute;
-                    right: -10px;
-                    top: -5px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-            }
-        }
+      .burger-icon {
+        color: $color-black;
+      }
     }
+
+    .center-mobile {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .link {
+        font-family: 'Bebas Neue', cursive;
+        font-size: 25px;
+
+        &.active {
+          color: $color-black;
+        }
+
+        &.white {
+          color: $color-white;
+        }
+      }
+    }
+
+    .right-mobile {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+
+      .cartIcon {
+        position: relative;
+        cursor: pointer;
+
+        span {
+          font-size: 12px;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: #111;
+          color: #fff;
+          position: absolute;
+          right: -10px;
+          top: -5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
 }
 
 // Media query for large screens to hide the burger menu
 @media (min-width: 769px) {
-    .burger-menu {
-        display: none;
-    }
+  .burger-menu {
+    display: none;
+  }
 }
 
 // Media query for small screens to adjust styles
 @media (max-width: 768px) {
-    .navbar .wrapper .left, .navbar .wrapper .center, .navbar .wrapper .right {
-        display: none;
-    }
+  .navbar .wrapper .left, .navbar .wrapper .center, .navbar .wrapper .right {
+    display: none;
+  }
 }

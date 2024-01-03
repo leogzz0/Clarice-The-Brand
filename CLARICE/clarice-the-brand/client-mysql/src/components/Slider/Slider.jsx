@@ -5,8 +5,8 @@ const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const data = [
-    '/img/Editorial Clarice/169-SAM_0224.jpg',
-    '/img/Editorial Clarice/59-SAM_0410.jpg',
+    '/img/Editorial Clarice/169-SAM_0224_44378068.webp',
+    '/img/Editorial Clarice/59-SAM_0410_44378188.webp',
   ];
 
   useEffect(() => {

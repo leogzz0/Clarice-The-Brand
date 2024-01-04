@@ -171,7 +171,7 @@ const Product = () => {
             <button
               className="add"
               onClick={() => {
-                if (selectedSize) {
+                if (selectedSize.size) {
                   dispatch(
                     addToCart({
                       id: data.id,

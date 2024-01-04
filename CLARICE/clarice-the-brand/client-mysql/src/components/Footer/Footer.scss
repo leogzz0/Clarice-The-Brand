@@ -60,12 +60,9 @@
             }
         }
 
-        .right {
-            img {
-                width: 100%;
-                height: 50px;
-            }
-
+        .right img {
+            width: 100%;
+            height: 5vh;
         }
     }
 
@@ -101,11 +98,9 @@
                 }
             }
 
-            .right {
-                img {
-                    width: 100%;
-                    height: auto;
-                }
+            .right img{
+                width: 100%;
+                height: auto;
             }
         }
     }

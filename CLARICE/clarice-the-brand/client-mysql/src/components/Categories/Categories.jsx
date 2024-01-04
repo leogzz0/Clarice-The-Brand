@@ -7,14 +7,14 @@ const Categories = () => {
       <div className="col">
         <div className="row">
           <img
-            src="./img/Editorial Clarice/68-SAM_0390.jpg"
+            src="./img/EditorialClariceWebp/68-SAM_0390.webp"
             alt="image-collage-1"
             loading='lazy'
           />
         </div>
         <div className="row">
           <img
-            src="./img/Editorial Clarice/163-SAM_0237.jpg"
+            src="./img/EditorialClariceWebp/163-SAM_0237.webp"
             alt="image-collage-2"
             loading='lazy'
           />
@@ -24,7 +24,7 @@ const Categories = () => {
         <div className="row">
           {' '}
           <img
-            src="./img/Editorial Clarice/88-SAM_0359.jpg"
+            src="./img/EditorialClariceWebp/88-SAM_0359.webp"
             alt="image-collage-3"
             loading='lazy'
           />
@@ -35,7 +35,7 @@ const Categories = () => {
           <div className="col">
             <div className="row">
               <img
-                src="./img/Editorial Clarice/20-SAM_0487.jpg"
+                src="./img/EditorialClariceWebp/20-SAM_0487.webp"
                 alt="image-collage-4"
                 loading='lazy'
               />
@@ -45,7 +45,7 @@ const Categories = () => {
             <div className="row">
               {' '}
               <img
-                src="./img/Editorial Clarice/121-SAM_0302.jpg"
+                src="./img/EditorialClariceWebp/121-SAM_0302.webp"
                 alt="image-collage-5"
                 loading='lazy'
               />
@@ -54,7 +54,7 @@ const Categories = () => {
         </div>
         <div className="row">
           <img
-            src="./img/Editorial Clarice/DSC_1415.JPG"
+            src="./img/EditorialClariceWebp/DSC_1415.webp"
             alt="image-collage-6"
             loading='lazy'
           />

@@ -24,7 +24,7 @@
 
     .season {
       font-size: 20px;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Bebas Neue';
     }
     
     .launch-title {
@@ -34,7 +34,7 @@
     }
     
     .discover-more-btn {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Bebas Neue';
       font-size: 15px;
       padding: 5px 15px;
       border: 1px solid white;
@@ -48,4 +48,24 @@
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .editorial-image {
+      height: 80vh;
+    }
+
+    .content {
+      padding: 20px 10px;
+
+      .launch-title {
+        font-size: 2em;
+      }
+
+      .discover-more-btn {
+        font-size: 12px;
+        padding: 10px 20px;
+      }
+    }
+  }
 }
+

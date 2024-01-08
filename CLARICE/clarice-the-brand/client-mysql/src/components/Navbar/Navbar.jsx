@@ -56,7 +56,7 @@ const Navbar = () => {
           <>
             <div className='burger-menu'>
               <button aria-label='burger-icon' onClick={() => setMobileMenuOpen(true)}>
-                <MenuOutlinedIcon className='burger-icon'/>
+                <MenuOutlinedIcon className={getLinkClassName('/burgerIcon')}/>
               </button>
             </div>
             <div className="center-mobile">
@@ -65,9 +65,9 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="right-mobile">
-              <SearchIcon className="icon" />
+              <SearchIcon className={getLinkClassName('/searchIcon')} />
               <div className="cartIcon" onClick={() => setCartOpen(!cartOpen)}>
-                <ShoppingBagOutlinedIcon />
+                <ShoppingBagOutlinedIcon className={getLinkClassName('/cartIcon', true)} />
                 <span>{products.length}</span>
               </div>
             </div>

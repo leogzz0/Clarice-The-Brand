@@ -212,6 +212,15 @@ $color-black: #000;
       flex: 1;
       display: flex;
       align-items: center;
+      .link {
+        &.active {
+          color: $color-black;
+        }
+
+        &.white {
+          color: $color-white;
+        }
+      }
 
       button {
         background: none;
@@ -221,10 +230,6 @@ $color-black: #000;
         align-items: center;
         justify-content: center;
         padding: 0px;
-      }
-
-      .burger-icon {
-        color: $color-black;
       }
     }
 
@@ -254,6 +259,16 @@ $color-black: #000;
       justify-content: flex-end;
       align-items: center;
       gap: 10px;
+
+      .link {
+        &.active {
+          color: $color-black;
+        }
+
+        &.white {
+          color: $color-white;
+        }
+      }
 
       .cartIcon {
         position: relative;

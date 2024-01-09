@@ -21,8 +21,8 @@ const Footer = () => {
         </div>
         <div className="item">
           <h1>Contact</h1>
-          <Link to='/brand'>Instagram</Link>
-          <Link to='/contact'>Facebook</Link>
+          <Link to='https://www.instagram.com/claricethebrand/'>Instagram</Link>
+          <Link to='https://www.facebook.com/profile.php?id=100090770750687'>Facebook</Link>
         </div>
         <div className="item">
           <h1>About</h1>

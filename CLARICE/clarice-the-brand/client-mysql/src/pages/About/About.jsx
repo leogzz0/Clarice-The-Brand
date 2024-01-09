@@ -3,8 +3,7 @@ import './About.scss';
 
 const About = () => {
   const images = [
-    '/img/Editorial Clarice/31-SAM_0469.jpg',
-    '/img/Editorial Clarice/50-SAM_0426.jpg',
+    '/img/EditorialClariceWebp/31-SAM_0469.webp',
   ];
 
   return (

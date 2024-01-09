@@ -4,10 +4,10 @@ import './Brand.scss';
 
 const Brand = () => {
   const images = [
-    // '/img/Editorial Clarice/176-SAM_0211.jpg',
-    '/img/Editorial Clarice/59-SAM_0410.jpg',
-    // '/img/Editorial Clarice/169-SAM_0224.jpg',
-    '/img/Editorial Clarice/57-SAM_0412.jpg',
+    // '/img/EditorialClariceWebp/176-SAM_0211.webp',
+    '/img/EditorialClariceWebp/SAM_0410_44397016.webp',
+    // '/img/EditorialClariceWebp/169-SAM_0224.webp',
+    '/img/EditorialClariceWebp/SAM_0412_44396930.webp',
   ];
 
   const slogan = 'Stand Out';
@@ -45,21 +45,21 @@ const Brand = () => {
       <div className="collage">
         <div className="row top">
           <div className="col">
-            <img src="/img/Editorial Clarice/61-SAM_0405.jpg" alt="Boots from Clarice" />
+            <img src="/img/EditorialClariceWebp/61-SAM_0405.webp" alt="Boots from Clarice" />
           </div>
           <div className="col">
-            <img src="/img/Editorial Clarice/200-SAM_0161.jpg" alt="Heels from Clarice" />
+            <img src="/img/EditorialClariceWebp/200-SAM_0161.webp" alt="Heels from Clarice" />
           </div>
         </div>
         <div className="row bottom">
           <div className="col">
-            <img src="/img/Editorial Clarice/97-SAM_0346.jpg" alt="Heels from Clarice" />
+            <img src="/img/EditorialClariceWebp/97-SAM_0346.webp" alt="Heels from Clarice" />
           </div>
           <div className="col">
-            <img src="/img/Editorial Clarice/28-SAM_0473.jpg" alt="Heels from Clarice" />
+            <img src="/img/EditorialClariceWebp/28-SAM_0473.webp" alt="Heels from Clarice" />
           </div>
           <div className="col">
-            <img src="/img/Editorial Clarice/DSC_1361.JPG" alt="Boots from Clarice" />
+            <img src="/img/EditorialClariceWebp/DSC_1361.webp" alt="Boots from Clarice" />
           </div>
         </div>
       </div>
@@ -78,15 +78,15 @@ const Brand = () => {
       <div className="collage2">
         <div className="row">
           <div className="col large">
-            <img src="/img/Editorial Clarice/20-SAM_0487.jpg" alt="Two models" />
+            <img src="/img/EditorialClariceWebp/20-SAM_0487.webp" alt="Two models" />
           </div>
         </div>
         <div className="row">
           <div className="col">
-            <img src="/img/Editorial Clarice/137-SAM_0272.jpg" alt="Champagne model" />
+            <img src="/img/EditorialClariceWebp/137-SAM_0272.webp" alt="Champagne model" />
           </div>
           <div className="col">
-            <img src="/img/Editorial Clarice/210-SAM_0148.jpg" alt="Heels" />
+            <img src="/img/EditorialClariceWebp/210-SAM_0148.webp" alt="Heels" />
           </div>
         </div>
       </div>

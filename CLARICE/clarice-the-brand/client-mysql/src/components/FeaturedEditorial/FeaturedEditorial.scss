@@ -1,6 +1,6 @@
 .featured-editorial {
   position: relative;
-  color: white;
+  color: #fff;
 
   .editorial-image {
     width: 100%;
@@ -37,8 +37,8 @@
       font-family: 'Bebas Neue';
       font-size: 15px;
       padding: 5px 15px;
-      border: 1px solid white;
-      color: white;
+      border: 1px solid #fff;
+      color: #fff;
       text-decoration: none;
       transition: background-color 0.3s, color 0.3s;
       
@@ -50,18 +50,23 @@
   }
 
   @media (max-width: 768px) {
+    color: #000;
     .editorial-image {
-      height: 80vh;
+      height: 40vh;
     }
 
     .content {
-      padding: 20px 10px;
+      position: static;
+      padding: 20px;
+      margin-top: 0vh;
 
       .launch-title {
         font-size: 2em;
       }
 
       .discover-more-btn {
+        background-color:#000;
+        color: #fff;
         font-size: 12px;
         padding: 10px 20px;
       }

@@ -87,7 +87,7 @@
             height: 150vh;
 
             .col {
-                flex: 1; 
+                flex: 1;
                 img {
                     width: 100%;
                     height: 100%;
@@ -99,6 +99,57 @@
                 .col {
                     flex: 2;
                 }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .slider {
+            height: 50vh;
+            .slogan {
+                font-size: 2rem;
+            }
+        }
+
+        .collage {
+            .row {
+                display: flex;
+                width: 100%;
+                &.top {
+                    height: 40vh;
+                    .col {
+                        width: 50%;
+                    }
+                }
+                &.bottom {
+                    height: 40vh;
+                    .col {
+                        width: 33.3333%;
+                    }
+                }
+            }
+        }
+
+        .collage2 {
+            .row {
+                height: 40vh;
+            }
+        }
+
+        .welcome-message {
+            height: auto;
+            padding: 1rem 0;
+
+            .title {
+                font-size: 0.8rem;
+            }  
+            p {
+                font-size: 0.6rem;
+                max-width: 80%;
+            }
+            strong {
+                font-weight: bold;
+                font-size: 0.8rem;
             }
         }
     }

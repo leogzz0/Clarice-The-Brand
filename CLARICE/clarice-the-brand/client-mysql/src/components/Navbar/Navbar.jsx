@@ -85,22 +85,22 @@ const Navbar = () => {
                 <Link onClick={closeMobileMenu} className={getLinkClassName('/products/1')} to='/products/1'>
                   SHOP
                 </Link>
-                <Link Click={closeMobileMenu} className={getLinkClassName('/collection')} to='/collection'>
+                <Link onClick={closeMobileMenu} className={getLinkClassName('/collection')} to='/collection'>
                   COLLECTIONS
                 </Link>
-                <Link Click={closeMobileMenu} className={getLinkClassName('/editorial')} to='/editorial'>
+                <Link onClick={closeMobileMenu} className={getLinkClassName('/editorial')} to='/editorial'>
                   EDITORIAL
                 </Link>
-                <Link Click={closeMobileMenu} className={getLinkClassName('/brand')} to='/brand'>
+                <Link onClick={closeMobileMenu} className={getLinkClassName('/brand')} to='/brand'>
                   BRAND
                 </Link>
-                <Link Click={closeMobileMenu} className={getLinkClassName('/about')} to='/about'>
+                <Link onClick={closeMobileMenu} className={getLinkClassName('/about')} to='/about'>
                   ABOUT
                 </Link>
-                <Link Click={closeMobileMenu} className={getLinkClassName('/contact')} to='/contact'>
+                <Link onClick={closeMobileMenu} className={getLinkClassName('/contact')} to='/contact'>
                   CONTACT
                 </Link>
-                <Link Click={closeMobileMenu} className={getLinkClassName('/stores')} to='/stores'>
+                <Link onClick={closeMobileMenu} className={getLinkClassName('/stores')} to='/stores'>
                   STORES
                 </Link>
               </div>

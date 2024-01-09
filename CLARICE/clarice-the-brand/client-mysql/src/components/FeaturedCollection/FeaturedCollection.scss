@@ -15,7 +15,7 @@
   }
 }
 
-.featured-collection {
+  .featured-collection {
   position: relative;
   color: white;
 
@@ -62,9 +62,11 @@
 
 @media (max-width: 768px) {
   .featured-collection-link {
+
     .content .collection {
       display: block;
-      font-size: 2em;
+      font-size: 1.5em;
+      border-bottom: 1px solid white;
     }
 
     .collection-image {

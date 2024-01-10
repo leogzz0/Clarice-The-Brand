@@ -29,7 +29,7 @@
             top: 100%;
             background-color: white;
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 20px;
             z-index: 10;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             display: flex;
@@ -43,63 +43,157 @@
                     margin-bottom: 10px;
                 }
 
+                input {
+                    margin-right: 5px;
+                    cursor: pointer;
+                }
+
                 .inputItem {
                     display: flex;
                     align-items: center;
                     margin-bottom: 5px;
                     font-size: 0.85em;
 
-                    input[type="range"] {
-                        -webkit-appearance: none;
-                        appearance: none;
-                        flex-grow: 1;
-                        margin: 0 10px;
-                        height: 3px;
-                        background: #000;
-                        outline: none;
-                        border-radius: 20px;
+                    .price-range-wrapper {
+                        display: flex;
+                        align-items: center;
 
-                        &::-webkit-slider-thumb {
+                        input[type="range"] {
                             -webkit-appearance: none;
                             appearance: none;
-                            width: 15px;
-                            height: 15px;
+                            flex-grow: 1;
+                            margin: 0 10px;
+                            height: 3px;
                             background: #000;
+                            outline: none;
+                            border-radius: 20px;
                             cursor: pointer;
-                            border-radius: 50%;
+
+                            &::-webkit-slider-thumb {
+                                -webkit-appearance: none;
+                                appearance: none;
+                                width: 15px;
+                                height: 15px;
+                                background: #000;
+                                cursor: pointer;
+                                border-radius: 50%;
+                            }
+
+                            &::-moz-range-thumb {
+                                width: 15px;
+                                height: 15px;
+                                background: #000;
+                                cursor: pointer;
+                                border-radius: 50%;
+                            }
                         }
 
-                        &::-moz-range-thumb {
-                            width: 15px;
-                            height: 15px;
-                            background: #000;
-                            cursor: pointer;
-                            border-radius: 50%;
+                        label {
+                            margin-left: 10px;
+                            font-size: 0.85em;
                         }
-                    }
 
-                    label {
-                        margin-left: 10px;
-                        font-size: 0.85em;
+                        .price-number {
+                            width: 40px;
+                            text-align: left;
+                        }
                     }
                 }
             }
 
-            button {
-                align-self: flex-end;
-                padding: 5px 15px;
-                background-color: #000;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
+            .filter-buttons {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
 
-                &:hover {
-                    background-color: #ffc3b9;
-                    animation: pulse 0.5s ease;
-                    text-decoration: none;
+                .reset-button {
+                    background-color: transparent;
+                    color: red;
+                    border: none;
+                    cursor: pointer;
+                    text-decoration: underline;
+                    padding: 5px 10px;
+                    font-size: 0.6em;
+                    &:hover {
+                        background-color: transparent;
+                        color: darken(red, 10%);
+                    }
+                }
+
+                .apply-button {
+                    position: relative;
+                    overflow: hidden;
+                    background-color: #000;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    padding: 10px 50px;
+                    cursor: pointer;
+                    min-height: 30px;
+                    display: flex;
+                    justify-content: center;
+
+                    .button-text,
+                    .button-text-appear {
+                        position: absolute;
+                        width: 100%;
+                        text-align: center;
+                        transition: transform 0.3s ease, opacity 0.3s ease;
+                        display: inline-block;
+                        white-space: nowrap;
+                    }
+
+                    .button-text {
+                        top: 50%;
+                        transform: translateY(-50%);
+                        opacity: 1;
+                    }
+
+                    .button-text-appear {
+                        top: 100%;
+                        opacity: 0;
+                        transform: translateY(-50%);
+                    }
+
+                    &:hover .button-text {
+                        animation: scrollText 0.6s ease-in-out forwards;
+                    }
+
+                    &:hover .button-text-appear {
+                        animation: textAppear 0.6s ease-in-out forwards;
+                    }
                 }
             }
+        }
+    }
+
+    @keyframes scrollText {
+        0% {
+            top: 50%;
+            opacity: 1;
+        }
+        50% {
+            top: 0;
+            opacity: 0;
+        }
+        100% {
+            top: 50%;
+            opacity: 0;
+        }
+    }
+
+    @keyframes textAppear {
+        0% {
+            top: 100%;
+            opacity: 0;
+        }
+        50% {
+            top: 100%;
+            opacity: 0;
+        }
+        100% {
+            top: 50%;
+            opacity: 1;
         }
     }
 

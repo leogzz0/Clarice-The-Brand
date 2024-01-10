@@ -6,10 +6,19 @@ import './Products.scss';
 
 const Products = () => {
   const catId = parseInt(useParams().id);
+
+  const [localMaxPrice, setLocalMaxPrice] = useState(5000);
+  const [localSort, setLocalSort] = useState(null);
+  const [localSelectedSubCats, setLocalSelectedSubCats] = useState([]);
+
   const [maxPrice, setMaxPrice] = useState(5000);
   const [sort, setSort] = useState(null);
   const [selectedSubCats, setSelectedSubCats] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const initialMacPrice = 5000;
+  const initialSort = null;
+  const initialSelectedSubCats = [];
 
   const { data, error } = useFetch(
     `/sub-categories?[filters][categories][id][$eq]=${catId}`,
@@ -23,15 +32,27 @@ const Products = () => {
     const value = e.target.value;
     const isChecked = e.target.checked;
 
-    setSelectedSubCats(
+    setLocalSelectedSubCats(
       isChecked
-        ? [...selectedSubCats, value]
-        : selectedSubCats.filter((item) => item !== value)
+        ? [...localSelectedSubCats, value]
+        : localSelectedSubCats.filter((item) => item !== value)
     );
   };
 
   const handleFilterApply = () => {
+    setMaxPrice(localMaxPrice);
+    setSort(localSort);
+    setSelectedSubCats(localSelectedSubCats);
     setIsFilterOpen(false);
+  };
+
+  const handleResetFilters = () => {
+    setLocalMaxPrice(initialMacPrice);
+    setLocalSort(initialSort);
+    setLocalSelectedSubCats(initialSelectedSubCats);
+    setMaxPrice(initialMacPrice);
+    setSort(initialSort);
+    setSelectedSubCats(initialSelectedSubCats);
   };
 
   return (
@@ -62,14 +83,16 @@ const Products = () => {
               <h2>Filter by price</h2>
               <div className="inputItem">
                 <span>0</span>
-                <input
-                  type="range"
-                  min={0}
-                  max={5000}
-                  value={maxPrice}
-                  onChange={(e) => setMaxPrice(e.target.value)}
-                />
-                <span>{maxPrice}</span>
+                <div className='price-range-wrapper'>
+                  <input
+                    type="range"
+                    min={0}
+                    max={5000}
+                    value={localMaxPrice}
+                    onChange={(e) => setLocalMaxPrice(e.target.value)}
+                  />
+                  <span className='price-number'>{localMaxPrice}</span>
+                </div>
               </div>
             </div>
 
@@ -82,7 +105,8 @@ const Products = () => {
                   id="asc"
                   value="asc"
                   name="sort"
-                  onChange={() => setSort('asc')}
+                  onChange={() => setLocalSort('asc')}
+                  checked={localSort === 'asc'}
                 />
                 <label htmlFor="asc">Price (Lowest first)</label>
               </div>
@@ -92,13 +116,19 @@ const Products = () => {
                   id="desc"
                   value="desc"
                   name="sort"
-                  onChange={() => setSort('desc')}
+                  onChange={() => setLocalSort('desc')}
+                  checked={localSort === 'desc'}
                 />
                 <label htmlFor="desc">Price (Highest first)</label>
               </div>
             </div>
-
-            <button onClick={handleFilterApply}>Apply Filters</button>
+            <div className="filter-buttons">
+              <button className="reset-button" onClick={handleResetFilters}>Reset Filters</button>
+              <button className="apply-button" onClick={handleFilterApply}>
+                <span className="button-text">Apply Filters</span>
+                <span className="button-text-appear">Apply Filters</span>
+              </button>
+            </div>
           </div>
         )}
       </div>

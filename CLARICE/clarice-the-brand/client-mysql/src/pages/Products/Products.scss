@@ -11,13 +11,11 @@
 
         button {
             background-color: transparent;
-            // border: 1px solid #ccc;
             border: none;
             padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
             &:hover {
-                // background-color: #e0e0e0;
                 background-color: transparent;
                 text-decoration: underline;
             }

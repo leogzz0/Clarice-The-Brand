@@ -20,6 +20,8 @@ const Navbar = () => {
   const products = useSelector((state) => state.cart.products);
   const location = useLocation();
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const getLinkClassName = (route) => {
     const whiteRoutes = ['/editorial', '/brand', '/collection', '/editorial/Clarice%20The%20Brand', '/collection/Clarice%20The%20Brand'];
@@ -49,14 +51,41 @@ const Navbar = () => {
     setMobileMenuOpen(false);
   };
 
+  const toggleSearchBar = () => {
+    setIsSearchBarVisible(!isSearchBarVisible);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
     <div className={`navbar ${!isVisible ? 'hidden' : ''} ${scrolled ? 'scrolled' : ''}`}>
+      {isSearchBarVisible && (
+        <div className="search-container">
+          <div className="search-inner">
+            <input
+              type="text"
+              placeholder="SEARCH"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="search-input-full"
+            />
+            <div className="search-icon">
+              <SearchIcon />
+            </div>
+          </div>
+          <div className="close-search" onClick={() => setIsSearchBarVisible(false)}>
+            <CloseIcon />
+          </div>
+        </div>
+      )}
       <div className="wrapper">
         {isMobile ? (
           <>
             <div className='burger-menu'>
               <button aria-label='burger-icon' onClick={() => setMobileMenuOpen(true)}>
-                <MenuOutlinedIcon className={getLinkClassName('/burgerIcon')}/>
+                <MenuOutlinedIcon className={getLinkClassName('/burgerIcon')} />
               </button>
             </div>
             <div className="center-mobile">
@@ -65,7 +94,7 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="right-mobile">
-              <SearchIcon className={getLinkClassName('/searchIcon')} />
+              <SearchIcon className={getLinkClassName('/searchIcon')} onClick={toggleSearchBar} />
               <div className="cartIcon" onClick={() => setCartOpen(!cartOpen)}>
                 <ShoppingBagOutlinedIcon className={getLinkClassName('/cartIcon', true)} />
                 <span>{products.length}</span>
@@ -152,11 +181,13 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="icons">
-                <SearchIcon className={getLinkClassName('/searchIcon')}/>
-                <PersonOutlineOutlinedIcon className={getLinkClassName('/profileIcon')}/>
-                <FavoriteBorderOutlinedIcon className={getLinkClassName('/wishlistIcon')}/>
+                <div className="search-icon" onClick={toggleSearchBar}>
+                  <SearchIcon />
+                </div>
+                <PersonOutlineOutlinedIcon className={getLinkClassName('/profileIcon')} />
+                <FavoriteBorderOutlinedIcon className={getLinkClassName('/wishlistIcon')} />
                 <div className="cartIcon" onClick={() => setCartOpen(!cartOpen)}>
-                  <ShoppingBagOutlinedIcon className={getLinkClassName('/cartIcon', true)}/>
+                  <ShoppingBagOutlinedIcon className={getLinkClassName('/cartIcon', true)} />
                   <span>{products.length}</span>
                 </div>
               </div>

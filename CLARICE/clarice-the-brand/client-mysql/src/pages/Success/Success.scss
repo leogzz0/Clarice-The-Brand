@@ -9,11 +9,11 @@
   color: white;
 
   &.success {
-    background-color: #4caf50;
+    background-color: #000;
   }
 
   &.cancelled {
-    background-color: #f44336;
+    background-color: #000;
   }
 
   .order-details {
@@ -38,15 +38,15 @@
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 1rem;
-    color: white;
-    background-color: #333;
+    color: #000;
+    background-color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #555;
+      background-color: #999;
     }
   }
 }

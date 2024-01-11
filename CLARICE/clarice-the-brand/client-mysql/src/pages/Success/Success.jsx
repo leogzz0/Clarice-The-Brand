@@ -22,16 +22,12 @@ function Success() {
           <h1>Payment Successful</h1>
           <p>Thank you for your purchase! Your order has been processed successfully.</p>
           <p>You would receive an email with the order details.</p>
-          <div className="order-details">
-            <p>Order ID: </p>
-            <p>Estimated Delivery: </p>
-          </div>
         </>
       ) : (
         <>
           <CancelIcon className="icon cancel-icon" />
           <h1>Transaction Cancelled</h1>
-          <p>We are sorry, your order was not completed. Please try again.</p>
+          <p>We are sorry, your order was not completed.</p>
         </>
       )}
       <button className="home-button" onClick={handleGoHome}>Keep Shopping</button>

@@ -23,8 +23,6 @@ const List = ({ subCats, maxPrice, sort, catId }) => {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log(queryString);
-
   return (
     <div className="list">
       {loading

@@ -27,7 +27,7 @@ export const Card = ({ item }) => {
             className="secondImg"
           />
         </div>
-        <h2 style={{ fontWeight: 'bold' }}>{item?.attributes.title}</h2>
+        <h2>{item?.attributes.title}</h2>
         <div className="prices">
           {/* <h3>${item.oldPrice || item?.attributes.price + 30}</h3> */}
           <h3>${item?.attributes.price}</h3>
@@ -63,4 +63,5 @@ Card.propTypes = {
   }).isRequired,
 };
 
-export default Card;
+export default React.memo(Card);
+

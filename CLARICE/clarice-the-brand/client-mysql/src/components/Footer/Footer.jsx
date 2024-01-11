@@ -16,8 +16,7 @@ const Footer = () => {
         </div>
         <div className="item">
           <h1>Links</h1>
-          <span>Compare</span>
-          <span>Cookies</span>
+          <Link to='/conditions'>General Conditions</Link>
         </div>
         <div className="item">
           <h1>Contact</h1>

@@ -13,6 +13,7 @@ import Brand from './pages/Brand/Brand';
 import About from './pages/About/About';
 import ContactUs from './pages/ContactUs/ContactUs';
 import Success from './pages/Success/Success';
+import Conditions from './pages/Conditions/Conditions';
 import { NavbarProvider } from './contexts/NavbarContext';
 import './app.scss';
 
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
         path:'/contact',
         element:<ContactUs />
       },
+      {
+        path:'/conditions',
+        element:<Conditions />
+      }
     ]
   },
   {

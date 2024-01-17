@@ -9,6 +9,9 @@ import { useMediaQuery } from 'react-responsive';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useNavbarVisibility } from '../../contexts/NavbarContext';
+import { useDispatch } from 'react-redux';
+import { setSearchQuery } from '../../redux/searchSlice';
+import { useNavigate } from 'react-router-dom';
 import Cart from '../Cart/Cart';
 import './Navbar.scss';
 
@@ -21,7 +24,10 @@ const Navbar = () => {
   const location = useLocation();
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const searchQuery = useSelector((state) => state.search.searchQuery);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const getLinkClassName = (route) => {
     const whiteRoutes = ['/editorial', '/brand', '/collection', '/editorial/Clarice%20The%20Brand', '/collection/Clarice%20The%20Brand'];
@@ -56,13 +62,18 @@ const Navbar = () => {
   };
 
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+    dispatch(setSearchQuery(e.target.value));
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    navigate('/search');
   };
 
   return (
     <div className={`navbar ${!isVisible ? 'hidden' : ''} ${scrolled ? 'scrolled' : ''}`}>
       {isSearchBarVisible && (
-        <div className="search-container">
+        <form onSubmit={handleSearchSubmit} className="search-container">
           <div className="search-inner">
             <input
               type="text"
@@ -71,14 +82,14 @@ const Navbar = () => {
               onChange={handleSearchChange}
               className="search-input-full"
             />
-            <div className="search-icon">
+            <button type="submit" className="search-icon">
               <SearchIcon />
-            </div>
+            </button>
           </div>
           <div className="close-search" onClick={() => setIsSearchBarVisible(false)}>
             <CloseIcon />
           </div>
-        </div>
+        </form>
       )}
       <div className="wrapper">
         {isMobile ? (

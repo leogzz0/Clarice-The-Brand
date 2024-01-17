@@ -4,10 +4,20 @@ import './List.scss';
 import useFetch from '../../hooks/useFetch';
 import Card from '../Card/Card';
 
-const List = ({ subCats, maxPrice, sort, catId }) => {
-  let queryString = `/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
-    (item) => `&[filters][sub_categories][id][$eq]=${item}`
-  )}`;
+const List = ({ subCats, maxPrice, sort, catId, searchQuery }) => {
+  let queryString = '/products?populate=*';
+
+  if (catId) {
+    queryString += `&[filters][categories][id]=${catId}`;
+    subCats.forEach(item => {
+      queryString += `&[filters][sub_categories][id][$eq]=${item}`;
+    });
+  }
+
+  if (searchQuery) {
+    // Adjust the filter based on how your Strapi model is set up for searching.
+    queryString += `&filters[title][$containsi]=${searchQuery}`;
+  }
 
   if (maxPrice) {
     queryString += `&[filters][price][$lte]=${maxPrice}`;
@@ -25,9 +35,7 @@ const List = ({ subCats, maxPrice, sort, catId }) => {
 
   return (
     <div className="list">
-      {loading
-        ? 'LOADING...'
-        : data?.map((item) => <Card item={item} key={item.id} />)}
+      {loading ? 'LOADING...' : data?.map((item) => <Card item={item} key={item.id} />)}
     </div>
   );
 };
@@ -36,7 +44,8 @@ List.propTypes = {
   subCats: PropTypes.arrayOf(PropTypes.number),
   maxPrice: PropTypes.number,
   sort: PropTypes.string,
-  catId: PropTypes.number.isRequired,
+  catId: PropTypes.number,
+  searchQuery: PropTypes.string,
 };
 
 export default List;

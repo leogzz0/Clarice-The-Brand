@@ -1,0 +1,10 @@
+.search {
+    padding: 5px 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 768px) {
+        padding: 5px 20px;
+    }
+}

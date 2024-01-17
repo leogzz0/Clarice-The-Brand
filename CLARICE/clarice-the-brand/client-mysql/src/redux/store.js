@@ -1,4 +1,5 @@
 import cartReducer from './cartReducer';
+import searchSlice from './searchSlice';
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -22,7 +23,8 @@ const persistedReducer = persistReducer(persistConfig, cartReducer);
 
 export const store = configureStore({
   reducer: {
-    cart: persistedReducer
+    cart: persistedReducer,
+    search: searchSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -15,7 +15,6 @@ const List = ({ subCats, maxPrice, sort, catId, searchQuery }) => {
   }
 
   if (searchQuery) {
-    // Adjust the filter based on how your Strapi model is set up for searching.
     queryString += `&filters[title][$containsi]=${searchQuery}`;
   }
 

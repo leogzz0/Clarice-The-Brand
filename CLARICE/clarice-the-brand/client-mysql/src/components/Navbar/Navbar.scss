@@ -348,15 +348,13 @@ $color-black: #000;
   }
 }
 
-// Media query for large screens to hide the burger menu
-@media (min-width: 769px) {
+@media (min-width: 1201px) {
   .burger-menu {
     display: none;
   }
 }
 
-// Media query for small screens to adjust styles
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .navbar .wrapper .left, .navbar .wrapper .center, .navbar .wrapper .right {
     display: none;
   }

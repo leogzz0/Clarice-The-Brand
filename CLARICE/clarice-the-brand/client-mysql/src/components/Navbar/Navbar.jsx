@@ -22,7 +22,7 @@ const Navbar = () => {
   const { isVisible } = useNavbarVisibility();
   const products = useSelector((state) => state.cart.products);
   const location = useLocation();
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 1200 });
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   const searchQuery = useSelector((state) => state.search.searchQuery);
   const dispatch = useDispatch();

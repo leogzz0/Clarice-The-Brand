@@ -19,7 +19,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { isVisible } = useNavbarVisibility();
+  const { isVisible, showNavbar, hideNavbar } = useNavbarVisibility();
+  const [wasNavbarVisible, setWasNavbarVisible] = useState(isVisible);
   const products = useSelector((state) => state.cart.products);
   const location = useLocation();
   const isMobile = useMediaQuery({ maxWidth: 1200 });
@@ -28,13 +29,13 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
+  const whiteRoutes = ['/editorial', '/brand', '/collection', '/editorial/Clarice%20The%20Brand', '/collection/Clarice%20The%20Brand'];
   const getLinkClassName = (route) => {
-    const whiteRoutes = ['/editorial', '/brand', '/collection', '/editorial/Clarice%20The%20Brand', '/collection/Clarice%20The%20Brand'];
     const isActive = location.pathname === route;
     const isWhite = whiteRoutes.includes(location.pathname);
     return `link${isActive ? ' active' : ''}${isWhite ? ' white' : ''}`;
   };
+  const isActiveRoute = whiteRoutes.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +59,22 @@ const Navbar = () => {
   };
 
   const toggleSearchBar = () => {
+    if (!isSearchBarVisible) {
+      setWasNavbarVisible(isVisible);
+      showNavbar();
+    } else {
+      if (!wasNavbarVisible) {
+        hideNavbar();
+      }
+    }
     setIsSearchBarVisible(!isSearchBarVisible);
+  };
+
+  const closeSearchBar = () => {
+    setIsSearchBarVisible(false);
+    if (!wasNavbarVisible) {
+      hideNavbar();
+    }
   };
 
   const handleSearchChange = (e) => {
@@ -73,7 +89,7 @@ const Navbar = () => {
   return (
     <div className={`navbar ${!isVisible ? 'hidden' : ''} ${scrolled ? 'scrolled' : ''}`}>
       {isSearchBarVisible && (
-        <form onSubmit={handleSearchSubmit} className="search-container">
+        <form onSubmit={handleSearchSubmit} className={`search-container ${isActiveRoute ? 'active-route' : ''}`}>
           <div className="search-inner">
             <input
               type="text"
@@ -86,7 +102,7 @@ const Navbar = () => {
               <SearchIcon />
             </button>
           </div>
-          <div className="close-search" onClick={() => setIsSearchBarVisible(false)}>
+          <div className="close-search" onClick={closeSearchBar}>
             <CloseIcon />
           </div>
         </form>
@@ -193,7 +209,7 @@ const Navbar = () => {
               </div>
               <div className="icons">
                 <div className="search-icon" onClick={toggleSearchBar}>
-                  <SearchIcon />
+                  <SearchIcon className={getLinkClassName('/searchIcon')}/>
                 </div>
                 <PersonOutlineOutlinedIcon className={getLinkClassName('/profileIcon')} />
                 <FavoriteBorderOutlinedIcon className={getLinkClassName('/wishlistIcon')} />

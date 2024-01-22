@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React from 'react';
 import './Cart.scss';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
@@ -9,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { loadStripe } from '@stripe/stripe-js';
 import { makeRequest } from '../../makeRequest';
 import PropTypes from 'prop-types';
+import process from 'process';
 
 const Cart = ({ isCartOpen, isMobile, onClose }) => {
   const cartClass = `cart ${isCartOpen ? 'open' : ''} ${isMobile ? 'mobile' : ''}`;
@@ -18,7 +18,6 @@ const Cart = ({ isCartOpen, isMobile, onClose }) => {
   const totalPrice = () => {
     let total = 0;
     products.forEach(item => (
-      // total += item.quantity * item.price
       total +=  item.price
     ));
     return total.toFixed(2);
@@ -56,7 +55,6 @@ const Cart = ({ isCartOpen, isMobile, onClose }) => {
             <div className="size">Size: {item.size.replace('size', '')} (MX)</div>
             <div className="quantity">Quantity: {item.quantity}</div>
             <div className="price">${item.price}</div>
-            {/* <p>{item.description?.substring(0,50)}</p> */}
           </div>
           <div className='delete-container'>
             <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
@@ -67,7 +65,7 @@ const Cart = ({ isCartOpen, isMobile, onClose }) => {
         <span>SUBTOTAL</span>
         <span>${totalPrice()}</span>
       </div>
-      <button onClick={handlePayment}>
+      <button data-testid="checkout-button" onClick={handlePayment}>
         <span className="button-text">PROCEED TO CHECKOUT</span>
         <span className="button-text button-text-appear">PROCEED TO CHECKOUT</span>
       </button>

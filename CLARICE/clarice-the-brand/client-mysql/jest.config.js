@@ -9,7 +9,7 @@ module.exports = {
   },
   transformIgnorePatterns: [
     '^.+\\.module\\.(css|sass|scss)$',
-    '/node_modules/(?!axios).+\\.js$'
+    '/node_modules/(?!axios)/'
   ],
   moduleNameMapper: {
     '^react-native$': 'react-native-web',

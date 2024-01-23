@@ -13,7 +13,6 @@ const FeaturedProducts = ({ type }) => {
     <div className="FeaturedProducts">
       <div className="top">
         <h1>{type} products</h1>
-        {/* <p>This are some {type} products that are fan favorite.</p> */}
       </div>
       <div className="bottom">
         {error

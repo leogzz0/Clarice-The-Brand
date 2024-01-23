@@ -8,7 +8,7 @@ const FeaturedCollection = ({ imageUrl, season, collection }) => {
     <Link to={`/collection/${season}`} className='featured-collection-link'>
       <div className='featured-collection'>
         <img src={imageUrl} alt={collection} className='collection-image'/>
-        <div className='overlay'></div> {/* Add an overlay for the hover effect */}
+        <div className='overlay'></div>
         <div className='content'>
           <h1 className='collection'>{collection}</h1>
         </div>

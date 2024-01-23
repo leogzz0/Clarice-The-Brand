@@ -15,13 +15,13 @@ const Footer = () => {
           <Link to='/contact'>Contact</Link>
         </div>
         <div className="item">
-          <h1>Links</h1>
+          <h1>Conditions</h1>
           <Link to='/conditions'>General Conditions</Link>
         </div>
         <div className="item">
-          <h1>Contact</h1>
-          <Link to='https://www.instagram.com/claricethebrand/'>Instagram</Link>
-          <Link to='https://www.facebook.com/profile.php?id=100090770750687'>Facebook</Link>
+          <h1>Social Media</h1>
+          <Link to='https://www.instagram.com/claricethebrand/' target='_blank' rel='noopener noreferrer'>Instagram</Link>
+          <Link to='https://www.facebook.com/profile.php?id=100090770750687' target='_blank' rel='noopener noreferrer' >Facebook</Link>
         </div>
         <div className="item">
           <h1>About</h1>

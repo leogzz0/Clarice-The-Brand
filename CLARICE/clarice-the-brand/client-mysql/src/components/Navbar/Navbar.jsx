@@ -98,7 +98,7 @@ const Navbar = () => {
               onChange={handleSearchChange}
               className="search-input-full"
             />
-            <button type="submit" className="search-icon">
+            <button type="submit" className="search-icon" data-testid='searchIcon'>
               <SearchIcon />
             </button>
           </div>
@@ -111,8 +111,8 @@ const Navbar = () => {
         {isMobile ? (
           <>
             <div className='burger-menu'>
-              <button aria-label='burger-icon' onClick={() => setMobileMenuOpen(true)}>
-                <MenuOutlinedIcon className={getLinkClassName('/burgerIcon')} />
+              <button aria-label='burger-icon' onClick={() => setMobileMenuOpen(true)} data-testid='burgerIcon'>
+                <MenuOutlinedIcon className={getLinkClassName('/burgerIcon')} data-testid='burgerIcon' />
               </button>
             </div>
             <div className="center-mobile">
@@ -121,7 +121,7 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="right-mobile">
-              <SearchIcon className={getLinkClassName('/searchIcon')} onClick={toggleSearchBar} />
+              <SearchIcon className={getLinkClassName('/searchIcon')} onClick={toggleSearchBar} data-testid='searchIcon' />
               <div className="cartIcon" onClick={() => setCartOpen(!cartOpen)}>
                 <ShoppingBagOutlinedIcon className={getLinkClassName('/cartIcon', true)} />
                 <span>{products.length}</span>
@@ -209,7 +209,7 @@ const Navbar = () => {
               </div>
               <div className="icons">
                 <div className="search-icon" onClick={toggleSearchBar}>
-                  <SearchIcon className={getLinkClassName('/searchIcon')}/>
+                  <SearchIcon className={getLinkClassName('/searchIcon')} data-testid='searchIcon' />
                 </div>
                 <PersonOutlineOutlinedIcon className={getLinkClassName('/profileIcon')} />
                 <FavoriteBorderOutlinedIcon className={getLinkClassName('/wishlistIcon')} />

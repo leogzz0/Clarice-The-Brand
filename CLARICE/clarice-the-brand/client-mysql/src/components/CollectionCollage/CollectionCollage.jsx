@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Carousel from '../Carousel/Carousel';
 import Card from '../Card/Card';
 import useFetch from '../../hooks/useFetch';
 import './CollectionCollage.scss';
@@ -19,7 +18,6 @@ const CollectionCollage = ({ photos, type }) => {
 
       {/* Text Block */}
       <div className="text-block">
-        <p>a brief introduction to our amazing collection...</p>
         <p>a brief introduction to our amazing collection...</p>
       </div>
 

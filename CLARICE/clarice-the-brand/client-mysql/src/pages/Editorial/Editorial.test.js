@@ -19,7 +19,7 @@ jest.mock('../../contexts/NavbarContext', () => ({
   }),
 }));
 
-describe('Editorial Component', () => {
+describe('Editorial Page', () => {
   it('renders without crashing', () => {
     render(
       <Router>

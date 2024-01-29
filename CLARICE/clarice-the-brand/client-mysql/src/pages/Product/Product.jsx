@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React from 'react';
 import { useState, useEffect } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -9,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartReducer';
 import { useSwipeable } from 'react-swipeable';
+import process from 'process';
 
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({

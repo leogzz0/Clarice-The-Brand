@@ -1,15 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card';
 import useFetch from '../../hooks/useFetch';
 import './CollectionCollage.scss';
 import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
+import { useSwipeable } from 'react-swipeable';
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowSize;
+}
 
 const CollectionCollage = ({ photos, type }) => {
   const { data, loading, error } = useFetch(
     `/products?populate=*&[filters][type][$eq]=${type}`
   );
+
+  const size = useWindowSize();
+  const visibleItemCount = size.width <= 1125 ? 2 : size.width <= 1500 ? 3 : 4;
+
+  // state to track the current index of the carousel
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // handling left arrow click
+  const handleLeftArrowClick = () => {
+    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleRightArrowClick(),
+    onSwipedRight: () => handleLeftArrowClick(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
+
+  // calculating which items to diplay based on currentIndex
+  const visibleItems = data?.slice(currentIndex, currentIndex + visibleItemCount);
+
+  // handling right arrow click
+  const handleRightArrowClick = () => {
+    const maxIndex = data.length - 4;
+    setCurrentIndex(prevIndex => (prevIndex < maxIndex ? prevIndex + 1 : prevIndex));
+  };
 
   return (
     <div className="collection-collage">
@@ -23,27 +72,23 @@ const CollectionCollage = ({ photos, type }) => {
 
       {/* Carousel Section */}
       <div className="carousel-section">
-        <div className="carousel-title">
-          <h2>La Beauté Collection</h2>
-          <div className="icons">
-            <div className="icon">
-              <WestIcon />
-            </div>
-            <div className="icon">
-              <EastIcon />
+        {size.width > 1125 && ( // Conditionally render the carousel title section
+          <div className="carousel-title">
+            <h2>La Beauté Collection</h2>
+            <div className="icons">
+              <div className="icon" onClick={handleLeftArrowClick}>
+                <WestIcon />
+              </div>
+              <div className="icon" onClick={handleRightArrowClick}>
+                <EastIcon />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="carousel">
-          {error
-            ? 'SOMETHING WENT WRONG!'
-            : loading
-              ? 'LOADING'
-              : data?.map((item) => <Card item={item} key={item.id} />)}
+        )}
+        <div className="carousel" {...handlers}>
+          {error ? 'SOMETHING WENT WRONG!' : loading ? 'LOADING' : visibleItems?.map(item => <Card item={item} key={item.id} />)}
         </div>
       </div>
-
-
       {/* Photo Grid */}
       <div className="photo-row">
         <img src={photos[1]} alt="Photo 1" className="one-quarter" />

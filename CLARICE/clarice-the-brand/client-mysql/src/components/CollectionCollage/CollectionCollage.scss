@@ -54,7 +54,6 @@
         .icon {
           width: 30px;
           height: 30px;
-          // border: 1px solid #999;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -69,6 +68,13 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
+      flex-direction: row;
+      width: calc(200px * totalNumberOfItems); // Replace totalNumberOfItems with actual number
+      transition: transform 0.5s ease-out;
+      .carousel-item { // Replace with actual class name
+        flex: 0 0 200px; // Prevents items from shrinking
+        // ... other styles
+      }
     }
   }
 }

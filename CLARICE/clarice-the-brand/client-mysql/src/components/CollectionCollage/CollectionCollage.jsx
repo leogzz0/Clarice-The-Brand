@@ -34,7 +34,7 @@ const CollectionCollage = ({ photos, type }) => {
   );
 
   const size = useWindowSize();
-  const visibleItemCount = size.width <= 1125 ? 2 : size.width <= 1500 ? 3 : 4;
+  const visibleItemCount = size.width <= 1150 ? 2 : size.width <= 1400 ? 3 : 4;
 
   // state to track the current index of the carousel
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,13 +52,29 @@ const CollectionCollage = ({ photos, type }) => {
   });
 
   // calculating which items to diplay based on currentIndex
-  const visibleItems = data?.slice(currentIndex, currentIndex + visibleItemCount);
+  const visibleItems = data ? data.slice(currentIndex, currentIndex + visibleItemCount) : [];
 
   // handling right arrow click
   const handleRightArrowClick = () => {
     const maxIndex = data.length - 4;
     setCurrentIndex(prevIndex => (prevIndex < maxIndex ? prevIndex + 1 : prevIndex));
   };
+
+  const CarouselDots = ({ currentIndex, itemCount }) => {
+    const dots = [];
+    for (let i = 0; i < itemCount; i++) {
+      dots.push(
+        <span key={i} className={`dot ${currentIndex === i ? 'active' : ''}`}></span>
+      );
+    }
+    return <div className="carousel-dots">{dots}</div>;
+  };
+
+  CarouselDots.propTypes = {
+    currentIndex: PropTypes.number.isRequired,
+    itemCount: PropTypes.number.isRequired,
+  };
+
 
   return (
     <div className="collection-collage">
@@ -67,12 +83,16 @@ const CollectionCollage = ({ photos, type }) => {
 
       {/* Text Block */}
       <div className="text-block">
-        <p>a brief introduction to our amazing collection...</p>
+        <h2>Introducing the newest “La Beauté Collection” by Clarice The Brand</h2>
+        <p>A collection destined to evoke confidence and elegance in every stride.
+          Join us on this enchanting journey as we embrace your uniqueness with our meticulously curated hand crafted designs.
+        </p>
+        <p>Cause you were born to stand out.</p>
       </div>
 
       {/* Carousel Section */}
       <div className="carousel-section">
-        {size.width > 1125 && ( // Conditionally render the carousel title section
+        {size.width > 1150 && (
           <div className="carousel-title">
             <h2>La Beauté Collection</h2>
             <div className="icons">
@@ -88,6 +108,9 @@ const CollectionCollage = ({ photos, type }) => {
         <div className="carousel" {...handlers}>
           {error ? 'SOMETHING WENT WRONG!' : loading ? 'LOADING' : visibleItems?.map(item => <Card item={item} key={item.id} />)}
         </div>
+        {size.width <= 1150 && data && (
+          <CarouselDots currentIndex={currentIndex} itemCount={Math.ceil(data?.length / visibleItemCount)} />
+        )}
       </div>
       {/* Photo Grid */}
       <div className="photo-row">

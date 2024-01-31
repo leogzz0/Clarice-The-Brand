@@ -18,7 +18,7 @@ const CollectionDetail = () => {
 
   return (
     <div>
-      <CollectionCollage photos={collection.photos} type="trending"/>
+      <CollectionCollage photos={collection.photos} type="normal"/>
     </div>
   );
 };

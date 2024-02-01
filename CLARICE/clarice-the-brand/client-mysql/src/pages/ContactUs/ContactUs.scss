@@ -74,8 +74,8 @@
           border-radius: 4px;
           &:focus {
             outline: none;
-            border-color: #333; // Changes the border color to soft pink when focused
-            box-shadow: 0 0 0 2px #333; // Optionally adds a shadow that acts as the new outline
+            border-color: #333;
+            box-shadow: 0 0 0 2px #333;
           }
         }
 
@@ -94,6 +94,35 @@
           }
         }
       }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact-container {
+    .contact-image {
+      .quote-overlay {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+
+    .contact-image {
+      flex: 1;
+      height: 300px;
+
+      .quote-overlay {
+        font-size: 1rem;
+      }
+    }
+
+    .contact-form {
+      flex: 1;
     }
   }
 }

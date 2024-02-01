@@ -15,6 +15,7 @@ import ContactUs from './pages/ContactUs/ContactUs';
 import Success from './pages/Success/Success';
 import Conditions from './pages/Conditions/Conditions';
 import Search from './pages/Search/Search';
+import ComingSoon from './pages/ComingSoon/ComingSoon';
 import { NavbarProvider } from './contexts/NavbarContext';
 import './app.scss';
 
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
       {
         path:'/search',
         element:<Search/>
+      },
+      {
+        path:'/coming-soon',
+        element:<ComingSoon/>
       }
     ]
   },

@@ -156,7 +156,7 @@ const Navbar = () => {
                 <Link onClick={closeMobileMenu} className={getLinkClassName('/contact')} to='/contact'>
                   CONTACT
                 </Link>
-                <Link onClick={closeMobileMenu} className={getLinkClassName('/stores')} to='/stores'>
+                <Link onClick={closeMobileMenu} className={getLinkClassName('/coming-soon')} to='/coming-soon'>
                   STORES
                 </Link>
               </div>
@@ -203,7 +203,7 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="item">
-                <Link className={getLinkClassName('/stores')} to="/">
+                <Link className={getLinkClassName('/coming-soon')} to="/coming-soon">
                   STORES
                 </Link>
               </div>
@@ -211,8 +211,12 @@ const Navbar = () => {
                 <div className="search-icon" onClick={toggleSearchBar}>
                   <SearchIcon className={getLinkClassName('/searchIcon')} data-testid='searchIcon' />
                 </div>
-                <PersonOutlineOutlinedIcon className={getLinkClassName('/profileIcon')} />
-                <FavoriteBorderOutlinedIcon className={getLinkClassName('/wishlistIcon')} />
+                <Link className={getLinkClassName('/profileIcon')} to='/coming-soon'>
+                  <PersonOutlineOutlinedIcon className={getLinkClassName('/profileIcon')} />
+                </Link>
+                <Link className={getLinkClassName('/wishlistIcon')} to='/coming-soon'>
+                  <FavoriteBorderOutlinedIcon className={getLinkClassName('/wishlistIcon')} />
+                </Link>
                 <div className="cartIcon" onClick={() => setCartOpen(!cartOpen)}>
                   <ShoppingBagOutlinedIcon className={getLinkClassName('/cartIcon', true)} />
                   <span>{products.length}</span>

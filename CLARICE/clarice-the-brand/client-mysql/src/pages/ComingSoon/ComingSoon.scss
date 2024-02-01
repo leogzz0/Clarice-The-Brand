@@ -18,4 +18,20 @@
     font-size: 1.25rem;
     color: #666;
   }
+
+  .home-button {
+    margin-top: 25px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #999;
+    }
+  }
 }

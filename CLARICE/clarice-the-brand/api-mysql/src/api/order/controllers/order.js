@@ -11,6 +11,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
   async create(ctx) {
     const { products } = ctx.request.body;
     try {
+      let productIdsForMetadata = [];
       for (const product of products) {
         const productSize = await strapi.entityService.findOne("api::product-size.product-size", product.sizeId, {
           fields: ["quantity"],
@@ -20,6 +21,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
           ctx.response.status = 400;
           return { error: `Product size out of stock: ${product.title}, size: ${product.size}` };
         }
+        productIdsForMetadata.push(product.id);
       }
 
       const lineItems = await Promise.all(
@@ -28,7 +30,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             .service("api::product.product")
             .findOne(product.id);
 
-          const imageUrl = 'https://i.imgur.com/EHyR2nP.png';
+          // const imageUrl = 'https://i.imgur.com/EHyR2nP.png';
 
           return {
             price_data: {
@@ -36,7 +38,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
               product_data: {
                 name: `${item.title}`,
                 description: `Size - ${product.size.replace('size', '')}`,
-                images: [imageUrl],
+                // images: [imageUrl],
               },
               unit_amount: Math.round(item.price * 100),
             },
@@ -44,12 +46,17 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
           };
         })
       );
+
+      const orderRecord = await strapi.service("api::order.order").create({
+        data: { products, status: 'pending' },
+      });
+
       const session = await stripe.checkout.sessions.create({
         shipping_address_collection: { allowed_countries: ['MX'] },
         payment_method_types: ["card"],
         mode: "payment",
         metadata: {
-          order: JSON.stringify(products)
+          orderId: orderRecord.id.toString(),
         },
         success_url: process.env.CLIENT_URL + "/success?success=true",
         cancel_url: process.env.CLIENT_URL + "/success?success=false",
@@ -62,9 +69,9 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
 
       return { stripeSession: session };
     } catch (error) {
+      console.error('Stripe session creation error:', error.message);
       ctx.response.status = 500;
-      console.log(error)
-      return { error };
+      return { error: error.message };
     }
   },
 
@@ -72,46 +79,53 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
     const event = ctx.request.body;
 
     try {
-      switch (event.type) {
-        case 'checkout.session.completed':
-          const session = event.data.object;
+      if (event.type === 'checkout.session.completed') {
+        const session = event.data.object;
+        // retrieve the order ID stored in the Stripe session's metadata
+        const orderId = session.metadata.orderId;
 
-          let orderItems = [];
-          if (session.metadata && session.metadata.order) {
-            orderItems = JSON.parse(session.metadata.order);
-          }
+        // fetch the order details, including populated products, from your database
+        const order = await strapi.entityService.findOne("api::order.order", orderId, {
+          fields: ['products'],
+          populate: { path: 'products', populate: { path: 'sizeId' } },
+        });
 
-          for (const item of orderItems) {
-            const productSizeId = item.sizeId;
-            const quantityPurchased = item.quantity;
+        if (!order || !order.products) {
+          console.error(`Order with ID ${orderId} not found or contains no products.`);
+          return;
+        }
 
-            console.log(`Processing product size ID ${productSizeId}, quantity ${quantityPurchased}`);
+        // iterate over each product in the order to process inventory updates
+        for (const item of order.products) {
+          const productSizeId = item.sizeId;
+          const quantityPurchased = item.quantity;
 
-            const productSize = await strapi.entityService.findOne("api::product-size.product-size", productSizeId, {
-              fields: ["quantity"],
+          console.log(`Processing product size ID ${productSizeId}, quantity ${quantityPurchased}`);
+
+          // fetch the current product size details to check and update inventory
+          const productSize = await strapi.entityService.findOne("api::product-size.product-size", productSizeId, {
+            fields: ["quantity"],
+          });
+
+          if (productSize && productSize.quantity >= quantityPurchased) {
+            // ff enough stock is available, proceed to update the quantity
+            const updateQuantity = productSize.quantity - quantityPurchased;
+            await strapi.entityService.update("api::product-size.product-size", productSizeId, {
+              data: { quantity: updateQuantity },
             });
 
-            if (productSize) {
-              const updateQuantity = Math.max(0, productSize.quantity - quantityPurchased);
-              console.log(`Updating product size ID ${productSizeId} from ${productSize.quantity} to ${updateQuantity}`);
-
-              await strapi.entityService.update("api::product-size.product-size", productSizeId, {
-                data: { quantity: updateQuantity },
-              });
-
-              console.log(`Updated product size ID ${productSizeId}`);
-            } else {
-              console.log(`Product size not found for ID ${productSizeId}`);
-            }
+            console.log(`Updated product size ID ${productSizeId} from ${productSize.quantity} to ${updateQuantity}`);
+          } else {
+            // log if the product size is not found or stock is insufficient
+            console.error(`Product size not found or stock insufficient for ID ${productSizeId}`);
           }
-          break;
-        default:
-          console.log(`Unhandled event type ${event.type}`);
+        }
+      } else {
+        console.log(`Unhandled event type ${event.type}`);
       }
     } catch (error) {
       console.error('Error processing webhook:', error);
     }
     ctx.send({ received: true });
   }
-
 }));

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './List.scss';
 import useFetch from '../../hooks/useFetch';
+import process from 'process';
 import Card from '../Card/Card';
 
 const List = ({ subCats, maxPrice, sort, catId, searchQuery }) => {
@@ -32,9 +33,19 @@ const List = ({ subCats, maxPrice, sort, catId, searchQuery }) => {
     return <div>Error: {error.message}</div>;
   }
 
+  useEffect(() => {
+    data?.forEach(item => {
+      const imageUrl = `${process.env.REACT_APP_UPLOAD_URL}${item.attributes.img.data.attributes.url}`;
+      const image2Url = `${process.env.REACT_APP_UPLOAD_URL}${item.attributes.img2.data.attributes.url}`;
+
+      new Image().src = imageUrl;
+      new Image().src = image2Url;
+    });
+  }, [data]);
+
   return (
     <div className="list">
-      {loading ? 'LOADING...' : data?.map((item) => <Card item={item} key={item.id} />)}
+      {loading ? '' : data?.map((item) => <Card item={item} key={item.id} />)}
     </div>
   );
 };

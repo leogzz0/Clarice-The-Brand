@@ -4,9 +4,9 @@ import './ContactUs.scss';
 
 const ContactUs = () => {
   const images = [
-    '/img/Editorial Clarice/DSC_1410.JPG',
-    '/img/Editorial Clarice/DSC_1431.JPG',
-    '/img/Editorial Clarice/DSC_1415.JPG',
+    '/img/EditorialClariceWebp/DSC_1410.webp',
+    '/img/EditorialClariceWebp/DSC_1431.webp',
+    '/img/EditorialClariceWebp/DSC_1415.webp',
   ];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 

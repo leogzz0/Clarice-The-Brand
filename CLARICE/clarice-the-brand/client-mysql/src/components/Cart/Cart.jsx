@@ -18,7 +18,7 @@ const Cart = ({ isCartOpen, isMobile, onClose }) => {
   const totalPrice = () => {
     let total = 0;
     products.forEach(item => (
-      total +=  item.price
+      total +=  item.price * item.quantity
     ));
     return total.toFixed(2);
   };

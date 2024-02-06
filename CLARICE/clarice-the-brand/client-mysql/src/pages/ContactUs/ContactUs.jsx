@@ -1,12 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './ContactUs.scss';
 
 const ContactUs = () => {
   const images = [
-    '/img/Editorial Clarice/DSC_1410.JPG',
-    '/img/Editorial Clarice/DSC_1431.JPG',
-    '/img/Editorial Clarice/DSC_1415.JPG',
+    '/img/EditorialClariceWebp/DSC_1410.webp',
+    '/img/EditorialClariceWebp/DSC_1431.webp',
+    '/img/EditorialClariceWebp/DSC_1415.webp',
   ];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -18,17 +19,36 @@ const ContactUs = () => {
     return () => clearInterval(intervalId);
   }, [images.length]);
 
-
+  const recaptchaRef = useRef();
   const form = useRef();
+  const [submissionStatus, setSubmissionStatus] = useState({
+    submitted: false,
+    message: '',
+  });
 
   const sendEmail = (e) => {
     e.preventDefault();
 
+    const recaptchaValue = recaptchaRef.current.getValue();
+    if (!recaptchaValue) {
+      alert('Please verify you\'re not a robot.');
+      return;
+    }
+
     emailjs.sendForm('service_0pytinc', 'template_hv6t6ib', form.current, 'p7RmAtxPf3xRck2Yv')
       .then((result) => {
         console.log(result.text);
+        setSubmissionStatus({
+          submitted: true,
+          message: 'Your message has been sent successfully.',
+        });
+        form.current.reset();
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
       }, (error) => {
         console.log(error.text);
+        setSubmissionStatus({ submitted: false, message: 'Failed to send your message. Please try again.' });
       });
   };
 
@@ -55,8 +75,19 @@ const ContactUs = () => {
             <textarea name="message" id="message" required />
           </div>
           <div className="form-field">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey="6LdaSGgpAAAAAJR10TrZ9-bPRnEDYKYG_1t4hDp5"
+            />
+          </div>
+          <div className="form-field">
             <input type="submit" value="Send" className="submit-btn" />
           </div>
+          {submissionStatus.submitted && (
+            <div className="confirmation-message">
+              {submissionStatus.message}
+            </div>
+          )}
         </form>
       </div>
     </div>

@@ -16,6 +16,7 @@ import Success from './pages/Success/Success';
 import Conditions from './pages/Conditions/Conditions';
 import Search from './pages/Search/Search';
 import ComingSoon from './pages/ComingSoon/ComingSoon';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { NavbarProvider } from './contexts/NavbarContext';
 import './app.scss';
 
@@ -23,6 +24,7 @@ const Layout = () => {
   return (
     <div className='app'>
       <Navbar/>
+      <ScrollToTop />
       <Outlet/>
       <Footer/>
     </div>

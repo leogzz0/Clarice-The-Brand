@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './Product.scss';
 import useFetch from '../../hooks/useFetch';
 import PropTypes from 'prop-types';
@@ -197,26 +197,28 @@ const Product = () => {
             >
               ADD TO CART
             </button>
-            <div className="links">
+            <hr />
+            {/* <div className="links">
               <div className="item">
                 <FavoriteBorderIcon /> ADD TO WISH LIST
               </div>
-            </div>
+            </div> */}
             <div className="info">
               <span>Collection: La Beauté Collection</span>
               <span>Color: {data?.attributes?.color}</span>
               <span>Material: {data?.attributes?.material}</span>
               <span>Handcrafted in Mexico</span>
             </div>
-            <hr />
-            <div className="info">
+            
+            {/* <div className="info">
               <span>FIT</span>
               <hr />
               <span>ADDITIONAL INFORMATION</span>
               <hr />
               <span>FAQ</span>
-            </div>
+            </div> */}
           </div>
+          <br />
         </>
       )}
     </div>

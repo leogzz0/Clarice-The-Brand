@@ -167,6 +167,11 @@ const Product = () => {
                   );
                 })}
               </div>
+              {(id === '5' || id === '10') && (
+                <div className="size-warning">
+                  <span>For this product is highly recommended to get a larger size</span>
+                </div>
+              )}
             </div>
             <button
               className="add"

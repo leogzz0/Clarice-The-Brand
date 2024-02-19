@@ -89,7 +89,7 @@ const router = createBrowserRouter([
       {
         path:'/coming-soon',
         element:<ComingSoon/>
-      }
+      },
     ]
   },
   {
@@ -101,12 +101,12 @@ const router = createBrowserRouter([
     element:<Product/>
   },
   {
-    path:'/success',
-    element:<Success/>
+    path: '/success',
+    element: <Success />
   },
   {
-    path:'/cancelled',
-    element:<Cancelled />
+    path: '/cancelled',
+    element: <Cancelled />
   }
 ]);
 

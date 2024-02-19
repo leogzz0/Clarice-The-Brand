@@ -13,6 +13,7 @@ import Brand from './pages/Brand/Brand';
 import About from './pages/About/About';
 import ContactUs from './pages/ContactUs/ContactUs';
 import Success from './pages/Success/Success';
+import Cancelled from './pages/Cancelled/Cancelled';
 import Conditions from './pages/Conditions/Conditions';
 import Search from './pages/Search/Search';
 import ComingSoon from './pages/ComingSoon/ComingSoon';
@@ -102,6 +103,10 @@ const router = createBrowserRouter([
   {
     path:'/success',
     element:<Success/>
+  },
+  {
+    path:'/cancelled',
+    element:<Cancelled />
   }
 ]);
 

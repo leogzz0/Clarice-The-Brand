@@ -15,7 +15,7 @@ export const Card = ({ item }) => {
               process.env.REACT_APP_UPLOAD_URL +
               item.attributes?.img?.data?.attributes?.url
             }
-            alt=""
+            alt={item?.attributes?.title}
             className="mainImg"
           />
           <img
@@ -23,7 +23,7 @@ export const Card = ({ item }) => {
               process.env.REACT_APP_UPLOAD_URL +
               item.attributes?.img2?.data?.attributes?.url
             }
-            alt=""
+            alt={item?.attributes?.title}
             className="secondImg"
           />
         </div>

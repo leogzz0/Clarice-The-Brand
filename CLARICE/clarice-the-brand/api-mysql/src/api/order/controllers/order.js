@@ -58,8 +58,8 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         metadata: {
           orderId: orderRecord.id.toString(),
         },
-        success_url: process.env.CLIENT_URL + "/success?success=true",
-        cancel_url: process.env.CLIENT_URL + "/success?success=false",
+        success_url: process.env.CLIENT_URL + "/success",
+        cancel_url: process.env.CLIENT_URL + "/cancelled",
         line_items: lineItems,
       });
 

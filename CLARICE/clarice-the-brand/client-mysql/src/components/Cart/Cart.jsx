@@ -24,7 +24,7 @@ const Cart = ({ isCartOpen, isMobile, onClose }) => {
   };
 
   const stripePromise = loadStripe(
-    'pk_test_51NycZYFkkp11RfLBILkc3GDUYT9aQB8F5Snr5Pgq3ueQ86OASZkJKpj7kWETf9lwlBhmr2n00I3gDsHZ95CEBGUU00vdBeuw7a'
+    'pk_live_51NycZYFkkp11RfLBLJJE1DrPFO1rvCeuvC6R3EtsUP7UIMBSfD7jPglxtUN1RPUJBEOfRcRspKoUjrjz5uJRIFp900qRM0xvFi'
   );
 
   const handlePayment = async () => {

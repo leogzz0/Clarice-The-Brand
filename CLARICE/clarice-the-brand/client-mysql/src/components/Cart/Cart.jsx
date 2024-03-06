@@ -28,6 +28,15 @@ const Cart = ({ isCartOpen, isMobile, onClose }) => {
   );
 
   const handlePayment = async () => {
+    if (window.fbq) {
+      window.fbq('track', 'InitiateCheckout', {
+        content_ids: products.map(item => item.id),
+        content_name: products.map(item => item.title),
+        content_type: 'product',
+        value: totalPrice(),
+        currency: 'MX'
+      });
+    }
     try {
       const stripe = await stripePromise;
       const res = await makeRequest.post('/orders', {

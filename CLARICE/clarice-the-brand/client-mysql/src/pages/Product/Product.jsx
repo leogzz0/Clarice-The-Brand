@@ -190,6 +190,14 @@ const Product = () => {
                       quantity: 1,
                     })
                   );
+                  // Track the "AddToCart" event using the Meta Pixel
+                  window.fbq && window.fbq('track', 'AddToCart', {
+                    content_name: data.attributes.title,
+                    content_id: data.id,
+                    content_type: 'product',
+                    value: data.attributes.price,
+                    currency: 'MX',
+                  });
                 } else {
                   alert('Please select a size before adding to cart.');
                 }

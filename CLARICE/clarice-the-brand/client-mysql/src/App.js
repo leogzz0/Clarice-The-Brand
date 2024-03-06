@@ -19,7 +19,11 @@ import Search from './pages/Search/Search';
 import ComingSoon from './pages/ComingSoon/ComingSoon';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { NavbarProvider } from './contexts/NavbarContext';
+import PixelBaseCode from './utils/PixelBaseCode';
+import process from 'process';
 import './app.scss';
+
+const pixelId = process.env.REACT_APP_META_PIXEL_ID;
 
 const Layout = () => {
   return (
@@ -115,6 +119,7 @@ function App() {
   return (
     <NavbarProvider>
       <div>
+        {pixelId && <PixelBaseCode pixelId={pixelId} />}
         <RouterProvider router={router} />
       </div>
     </NavbarProvider>

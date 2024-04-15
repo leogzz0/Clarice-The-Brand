@@ -53,7 +53,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
 
       const session = await stripe.checkout.sessions.create({
         shipping_address_collection: { allowed_countries: ['MX'] },
-        payment_method_types: ["card"],
+        payment_method_types: ["card", "oxxo"],
         mode: "payment",
         metadata: {
           orderId: orderRecord.id.toString(),

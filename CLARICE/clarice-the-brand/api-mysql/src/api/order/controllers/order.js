@@ -9,7 +9,7 @@ const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::order.order", ({ strapi }) => ({
   async create(ctx) {
-    const { products } = ctx.request.body;
+    const { products, promoCode } = ctx.request.body;
     try {
       let productIdsForMetadata = [];
       for (const product of products) {
@@ -61,6 +61,8 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         success_url: process.env.CLIENT_URL + "/success",
         cancel_url: process.env.CLIENT_URL + "/cancelled",
         line_items: lineItems,
+        allow_promotion_codes: true,
+        discounts: promoCode ? [{ coupon: promoCode }] : undefined,
       });
 
       await strapi

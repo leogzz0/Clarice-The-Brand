@@ -47,11 +47,25 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         })
       );
 
+      lineItems.push({
+        price_data: {
+          currency: "mxn",
+          product_data: {
+            name: "Shipping Cost",
+          },
+          unit_amount: 5000,
+        },
+        quantity: 1,
+      });
+
       const orderRecord = await strapi.service("api::order.order").create({
         data: { products, status: 'pending' },
       });
 
       const session = await stripe.checkout.sessions.create({
+        phone_number_collection: {
+          enabled: true,
+        },
         shipping_address_collection: { allowed_countries: ['MX'] },
         payment_method_types: ["card", "oxxo"],
         mode: "payment",

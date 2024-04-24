@@ -30,7 +30,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             .service("api::product.product")
             .findOne(product.id);
 
-          // const imageUrl = 'https://i.imgur.com/EHyR2nP.png';
+          const imageUrl = `${process.env.UPLOAD_URL}${product.img}`;
 
           return {
             price_data: {
@@ -38,7 +38,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
               product_data: {
                 name: `${item.title}`,
                 description: `Size - ${product.size.replace('size', '')}`,
-                // images: [imageUrl],
+                images: [imageUrl],
               },
               unit_amount: Math.round(item.price * 100),
             },

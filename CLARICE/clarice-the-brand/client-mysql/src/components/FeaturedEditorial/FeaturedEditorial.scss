@@ -1,6 +1,7 @@
 .featured-editorial {
   position: relative;
   color: #fff;
+  height: 100vh;
 
   .editorial-image {
     width: 100%;
@@ -51,6 +52,7 @@
 
   @media (max-width: 768px) {
     color: #000;
+    height: auto;
     .editorial-image {
       height: 40vh;
     }

@@ -10,7 +10,7 @@ const FeaturedEditorial = ({ imageUrl, season, launchTitle }) => {
       <div className="content">
         <h2 className="season">{season}</h2>
         <h1 className="launch-title">{launchTitle}</h1>
-        <Link to={`/editorial/${season}`} className="discover-more-btn">
+        <Link to={`/editorial/${launchTitle}`} className="discover-more-btn">
           Discover More
         </Link>
       </div>

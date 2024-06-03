@@ -1,8 +1,15 @@
 import React, { useEffect } from 'react';
 import { useNavbarVisibility } from '../../contexts/NavbarContext';
 import FeaturedEditorial from '../../components/FeaturedEditorial/FeaturedEditorial';
+import './Editorial.scss';
 
 const EditorialData = [
+  {
+    imageUrl: '/img/ClariceGlitz&GlamourCollectionWEBP/closeup cheetah y vino.webp',
+    season: 'Clarice The Brand',
+    launchTitle: 'The Glitz & Glamour Collection',
+    link: '/',
+  },
   {
     imageUrl: '/img/Editorial Clarice/DSC_1426.JPG',
     season: 'Clarice The Brand',
@@ -22,7 +29,7 @@ const Editorial = () => {
   }, [setIsVisible]);
 
   return (
-    <div>
+    <div className="editorial-container">
       {EditorialData.map((editorial, index) => (
         <FeaturedEditorial
           key={index}

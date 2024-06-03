@@ -1,5 +1,5 @@
 const editorialData = {
-  'Clarice The Brand': {
+  'La Beauté Collection': {
     title: 'La Beauté Collection',
     photos: [
       '/img/EditorialClariceWebp/DSC_1426.webp',
@@ -24,6 +24,20 @@ const editorialData = {
       '/img/EditorialClariceWebp/DSC_1415.webp',
       '/img/EditorialClariceWebp/114-SAM_0311.webp',
       '/img/EditorialClariceWebp/226-SAM_0115.webp',
+    ],
+  },
+  'The Glitz & Glamour Collection': {
+    title: 'The Glitz & Glamour Collection',
+    photos: [
+      '/img/ClariceGlitz&GlamourCollectionWEBP/closeup cheetah y vino.webp',
+      '/img/ClariceGlitz&GlamourCollectionWEBP/cheetah closeup.webp',
+      '/img/ClariceGlitz&GlamourCollectionWEBP/cheetah closeupp.webp',
+      '/img/ClariceGlitz&GlamourCollectionWEBP/closeup brillos y vino.webp',
+      '/img/ClariceGlitz&GlamourCollectionWEBP/andrea sentada sideways.webp',
+      '/img/ClariceGlitz&GlamourCollectionWEBP/yo boss babe close up.webp',
+      '/img/ClariceGlitz&GlamourCollectionWEBP/andrea y sofia sentadas.webp',
+      '/img/ClariceGlitz&GlamourCollectionWEBP/vino drink closeup.webp',
+
     ],
   },
 };

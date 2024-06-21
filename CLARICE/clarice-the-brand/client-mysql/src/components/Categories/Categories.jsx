@@ -35,7 +35,7 @@ const Categories = () => {
           <div className="col">
             <div className="row">
               <img
-                src="./img/EditorialClariceWebp/20-SAM_0487.webp"
+                src="./img/ClariceGlitz&GlamourCollectionWEBP/yo boss babe close up.webp"
                 alt="image-collage-4"
                 loading='lazy'
               />
@@ -45,7 +45,7 @@ const Categories = () => {
             <div className="row">
               {' '}
               <img
-                src="./img/EditorialClariceWebp/121-SAM_0302.webp"
+                src="./img/ClariceGlitz&GlamourCollectionWEBP/fav closeup cheetah y vino.webp"
                 alt="image-collage-5"
                 loading='lazy'
               />

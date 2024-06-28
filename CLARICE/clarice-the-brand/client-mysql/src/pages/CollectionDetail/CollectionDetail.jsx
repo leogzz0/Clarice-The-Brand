@@ -18,7 +18,13 @@ const CollectionDetail = () => {
 
   return (
     <div>
-      <CollectionCollage photos={collection.photos} type="normal"/>
+      <CollectionCollage
+        title={collection.title}
+        photos={collection.photos}
+        intro={collection.intro}
+        description={collection.description}
+        collection={collection.collection}
+      />
     </div>
   );
 };

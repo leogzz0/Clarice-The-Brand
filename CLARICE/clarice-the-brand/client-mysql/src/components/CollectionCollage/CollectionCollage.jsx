@@ -28,9 +28,10 @@ function useWindowSize() {
   return windowSize;
 }
 
-const CollectionCollage = ({ photos, type }) => {
+
+const CollectionCollage = ({ photos, collection, intro, description, title }) => {
   const { data, loading, error } = useFetch(
-    `/products?populate=*&[filters][type][$eq]=${type}`
+    `/products?populate=*&[filters][collection][$eq]=${collection}`
   );
 
   const size = useWindowSize();
@@ -51,12 +52,12 @@ const CollectionCollage = ({ photos, type }) => {
     trackMouse: true,
   });
 
-  // calculating which items to diplay based on currentIndex
+  // calculating which items to display based on currentIndex
   const visibleItems = data ? data.slice(currentIndex, currentIndex + visibleItemCount) : [];
 
   // handling right arrow click
   const handleRightArrowClick = () => {
-    const maxIndex = data.length - 4;
+    const maxIndex = data.length - visibleItemCount;
     setCurrentIndex(prevIndex => (prevIndex < maxIndex ? prevIndex + 1 : prevIndex));
   };
 
@@ -75,7 +76,6 @@ const CollectionCollage = ({ photos, type }) => {
     itemCount: PropTypes.number.isRequired,
   };
 
-
   return (
     <div className="collection-collage">
       {/* Full-width photo */}
@@ -83,18 +83,15 @@ const CollectionCollage = ({ photos, type }) => {
 
       {/* Text Block */}
       <div className="text-block">
-        <h2>Introducing the newest “La Beauté Collection” by Clarice The Brand</h2>
-        <p>A collection destined to evoke confidence and elegance in every stride.
-          Join us on this enchanting journey as we embrace your uniqueness with our meticulously curated hand crafted designs.
-        </p>
-        <p>Cause you were born to stand out.</p>
+        <h2>{intro}</h2>
+        <p>{description}</p>
       </div>
 
       {/* Carousel Section */}
       <div className="carousel-section">
         {size.width > 1150 && (
           <div className="carousel-title">
-            <h2>La Beauté Collection</h2>
+            <h2>{title}</h2>
             <div className="icons">
               <div className="icon" onClick={handleLeftArrowClick}>
                 <WestIcon />
@@ -112,6 +109,7 @@ const CollectionCollage = ({ photos, type }) => {
           <CarouselDots currentIndex={currentIndex} itemCount={Math.ceil(data?.length / visibleItemCount)} />
         )}
       </div>
+
       {/* Photo Grid */}
       <div className="photo-row">
         <img src={photos[1]} alt="Photo 1" className="one-quarter" />
@@ -149,7 +147,10 @@ const CollectionCollage = ({ photos, type }) => {
 
 CollectionCollage.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.string).isRequired,
-  type: PropTypes.string.isRequired,
+  collection: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  intro: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default CollectionCollage;

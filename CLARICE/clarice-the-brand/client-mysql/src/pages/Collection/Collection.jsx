@@ -4,6 +4,12 @@ import FeaturedCollection from '../../components/FeaturedCollection/FeaturedColl
 
 const CollectionData = [
   {
+    imageUrl: '/img/ClariceGlitz&GlamourCollectionWEBP/closeup cheetah y vino.webp',
+    season: 'The Glitz & Glamour Collection',
+    collection: 'The Glitz & Glamour Collection',
+    link: '/',
+  },
+  {
     imageUrl: '/img/Editorial Clarice/DSC_1415.JPG',
     season: 'Clarice The Brand',
     collection: 'La Beauté Collection',
